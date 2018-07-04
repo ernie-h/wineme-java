@@ -4,9 +4,23 @@
     var $firstNameFld, $lastNameFld;
     var $userRowTemplate, $tbody;
     var userService = new AdminUserServiceClient();
-    $(main);
+    $(document).ready(main);
 
-    function main() { … }
+    function main() {
+      $usernameFld = $("#usernameFld").val();
+      $passwordFld = $("#passwordFld").val();
+
+      $firstNameFld = $("#firstNameFld").val();
+      $lastNameFld = $("#lastNameFld").val();
+
+      $removeBtn = $("#wbdv-remove");
+      $editBtn = $("#wbdv-edit");
+      $createBtn = $("#wbdv-create");
+
+      $userRowTemplate = $('.wbdv-template.wbdv-user');
+      $tbody = $(".wbdv-tbody");
+
+    }
     function createUser() { … }
     function findAllUsers() { … }
     function findUserById() { … }
