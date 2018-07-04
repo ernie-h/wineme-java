@@ -1,27 +1,27 @@
 function User(username, password, firstName, lastName, phone, role, dateOfBirth) {
-  this.username = username;
-  this.password = password;
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.phone = phone;
-  this.role = role;
-  this.dateOfBirth = dateOfBirth;
+	this.username = username;
+	this.password = password;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.phone = phone;
+	this.role = role;
+	this.dateOfBirth = dateOfBirth;
 
-  //Setters/getters assignment
-  this.setUsername = setUsername;
-  this.getUsername = getUsername;
-  this.setPassword = setPassword;
-  this.getPassword = getPassword;
-  this.setFirstName = setFirstName;
-  this.getFirstName = getFirstName;
-  this.setLastName = setLastName;
-  this.getLastName = getLastName;
-  this.setPhone = setPhone;
-  this.getPhone = getPhone;
-  this.setRole = setRole;
-  this.getRole = getRole;
-  this.setDateOfBirth = setDateOfBirth;
-  this.getDateOfBirth = getDateOfBirth;
+	//Setters/getters assignment
+	this.setUsername = setUsername;
+	this.getUsername = getUsername;
+	this.setPassword = setPassword;
+	this.getPassword = getPassword;
+	this.setFirstName = setFirstName;
+	this.getFirstName = getFirstName;
+	this.setLastName = setLastName;
+	this.getLastName = getLastName;
+	this.setPhone = setPhone;
+	this.getPhone = getPhone;
+	this.setRole = setRole;
+	this.getRole = getRole;
+	this.setDateOfBirth = setDateOfBirth;
+	this.getDateOfBirth = getDateOfBirth;
 
   //Setters/getters functions
   function setUsername(username) {
@@ -32,7 +32,7 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
   }
   function setPassword(password) {
     this.password = password;
-  }
+	}
   function getPassword() {
     return this.password;
   }
