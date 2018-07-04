@@ -1,0 +1,23 @@
+{
+  "name": "cs4550-summer2-2018-java-server-ehao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernie-h/cs4550-summer2-2018-java-server-ehao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ernie-h/cs4550-summer2-2018-java-server-ehao/issues"
+  },
+  "homepage": "https://github.com/ernie-h/cs4550-summer2-2018-java-server-ehao#readme"
+}
