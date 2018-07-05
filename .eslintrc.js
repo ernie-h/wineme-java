@@ -23,11 +23,14 @@ module.exports = {
         ],
         "quotes": [
             "error",
-            "double"
+            "single"
         ],
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "space-in-parens": [
+            "error",
+            "never"],
     },
 };
