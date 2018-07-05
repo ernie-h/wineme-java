@@ -7,6 +7,7 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
 	this.role = role;
 	this.dateOfBirth = dateOfBirth;
 
+
 	//Setters/getters assignment
 	this.setUsername = setUsername;
 	this.getUsername = getUsername;
@@ -23,47 +24,47 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
 	this.setDateOfBirth = setDateOfBirth;
 	this.getDateOfBirth = getDateOfBirth;
 
-  //Setters/getters functions
-  function setUsername(username) {
-    this.username = username;
-  }
-  function getUsername() {
-    return this.username;
-  }
-  function setPassword(password) {
-    this.password = password;
+	//Setters/getters functions
+	function setUsername(username) {
+		this.username = username;
 	}
-  function getPassword() {
-    return this.password;
-  }
-  function setFirstName(firstName) {
-    this.firstName = firstName;
-  }
-  function getFirstName() {
-    return this.firstName;
-  }
-  function setLastName(lastName) {
-    this.lastName = lastName;
-  }
-  function getLastName() {
-    return this.lastName;
-  }
-  function setPhone(phone) {
-    this.phone = phone;
-  }
-  function getPhone() {
-    return this.phone;
-  }
-  function setRole(role) {
-    this.role = role;
-  }
-  function getRole() {
-    return this.role;
-  }
-  function setDateOfBirth(dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-  function getDateOfBirth() {
-    return this.dateOfBirth;
-  }
+	function getUsername() {
+		return this.username;
+	}
+	function setPassword(password) {
+		this.password = password;
+	}
+	function getPassword() {
+		return this.password;
+	}
+	function setFirstName(firstName) {
+		this.firstName = firstName;
+	}
+	function getFirstName() {
+		return this.firstName;
+	}
+	function setLastName(lastName) {
+		this.lastName = lastName;
+	}
+	function getLastName() {
+		return this.lastName;
+	}
+	function setPhone(phone) {
+		this.phone = phone;
+	}
+	function getPhone() {
+		return this.phone;
+	}
+	function setRole(role) {
+		this.role = role;
+	}
+	function getRole() {
+		return this.role;
+	}
+	function setDateOfBirth(dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	function getDateOfBirth() {
+		return this.dateOfBirth;
+	}
 }
