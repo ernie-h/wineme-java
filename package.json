@@ -6,7 +6,9 @@
   "dependencies": {
     "eslint": "^5.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-config-jquery": "^1.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

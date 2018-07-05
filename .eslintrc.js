@@ -1,8 +1,11 @@
 module.exports = {
     "env": {
-        "browser": true
+        "browser": true,
+        "es6": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
+    "extends": "jquery",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -26,5 +29,5 @@ module.exports = {
             "error",
             "always"
         ]
-    }
+    },
 };
