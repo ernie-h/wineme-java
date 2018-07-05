@@ -1,7 +1,8 @@
 (function() {
 	var $usernameFld, $passwordFld;
-	var $removeBtn, $editBtn, $createBtn;
 	var $firstNameFld, $lastNameFld;
+	var $emailFld, $phoneFld, $dateOfBirthFld, $roleFld;
+	var $removeBtn, $editBtn, $createBtn;
 	var $userRowTemplate, $tbody;
 
 	//var userService = new AdminUserServiceClient();
@@ -10,9 +11,11 @@
 		console.log('Main func hit');
 		$usernameFld = $('#usernameFld');
 		$passwordFld = $('#passwordFld');
-
 		$firstNameFld = $('#firstNameFld');
 		$lastNameFld = $('#lastNameFld');
+		$phoneFld = $('#firstNameFld');
+		$roleFld = $('#lastNameFld');
+		$dateOfBirthFld = $('#firstNameFld');
 
 		$removeBtn = $('#wbdv-remove');
 		$editBtn = $('#wbdv-edit');
@@ -26,14 +29,8 @@
 
 	function createUser() {
 		console.log('Create User hit');
+		var
 		if ($usernameFld && $passwordFld && $firstNameFld && $lastNameFld != null) {
-			var $user = $.getScript('user.model.client.js', function() {
-				User($usernameFld.val(),
-					$passwordFld.val(),
-					$firstNameFld.val(),
-					$lastNameFld.val());
-			});
-			console.log($user);
 		} else {
 			alert('Please fill in all fields before creating a user');
 		}
