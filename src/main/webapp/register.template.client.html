@@ -1,21 +1,51 @@
-<h1> Sign up </h1>
-<p> Please login with your data</p>
-<div>
-  <label for="username">
-    Username
-  </label>
-  <input type="text"
-         placeholder="Ernie"
-         id="username"/>
-</div>
-<div>
-  <label for="password">
-    Password
-  </label>
-  <input type="password"
-         id="password"/>
-</div>
-<button>
-  Login
-</button>
-<a href="/login.template.client.html"> Log in! </a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign up page!</title>
+    <link rel="stylesheet" href=
+      "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href=
+      "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="register.style.client.css" rel="stylesheet" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1> Sign up </h1>
+    <p> Please login with your data</p>
+
+    <div>
+      <label for="username">
+        Username
+      </label>
+      <input type="text"
+             placeholder="Ernie"
+             id="username"/>
+    </div>
+
+    <div>
+      <label for="password">
+        Password
+      </label>
+      <input type="password" id="password"/>
+    </div>
+
+    <div>
+      <label for="password2">
+        Validate Password
+      </label>
+      <input type="password" id="password2"/>
+    </div>
+
+    <button id="registerBtn"> Register </button>
+
+    <a href="/login.template.client.html"> Log in! </a>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="register.controller.client.js"></script>
+  </body>
+</html>
