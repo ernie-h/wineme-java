@@ -13,9 +13,10 @@
 		$passwordFld = $('#passwordFld');
 		$firstNameFld = $('#firstNameFld');
 		$lastNameFld = $('#lastNameFld');
-		$phoneFld = $('#firstNameFld');
-		$roleFld = $('#lastNameFld');
-		$dateOfBirthFld = $('#firstNameFld');
+		$emailFld = $('#emailFld');
+		$phoneFld = $('#phoneFld');
+		$dateOfBirthFld = $('#dateOfBirthFld');
+		$roleFld = $('#roleFld');
 
 		$removeBtn = $('#wbdv-remove');
 		$editBtn = $('#wbdv-edit');
@@ -29,8 +30,39 @@
 
 	function createUser() {
 		console.log('Create User hit');
-		var
-		if ($usernameFld && $passwordFld && $firstNameFld && $lastNameFld != null) {
+		var $usernameStr = $usernameFld.val();
+		var $passwordStr = $passwordFld.val();
+		var $firstNameStr = $firstNameFld.val();
+		var $lastNameStr = $lastNameFld.val();
+		var $emailStr = $emailFld.val();
+		var $phoneStr = $phoneFld.val();
+		var $dateOfBirthStr = $dateOfBirthFld.val();
+		var $roleStr = $roleFld.val();
+
+		if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
+			$emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
+				var userObj = {
+					username: $usernameStr,
+					password: $passwordStr,
+					first_name: $firstNameStr,
+					last_name: $lastNameStr,
+					email: $emailStr,
+					phone: $phoneStr,
+					date_of_birth: $dateOfBirthStr,
+					role: $roleStr
+				};
+				var userObjStr = JSON.stringify(userObj);
+
+				console.log(userObj);
+				console.log(userObjStr);
+
+				fetch('http://localhost:8080/api/user', {
+					method: 'post',
+					body: userObjStr,
+					headers: {
+						contentType: 'application/json'
+					}
+				});
 		} else {
 			alert('Please fill in all fields before creating a user');
 		}
