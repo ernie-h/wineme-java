@@ -1,31 +1,37 @@
-package java.webdev.models;
+package com.example.myapp.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 @Entity
 public class User {
   @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String username;
   private String password;
-  private String firstName;
-  private String lastName;
+  private String first_name;
+  private String last_name;
   private String email;
   private String phone;
-  private String dateOfBirth;
+  private String date_of_birth;
   private String role;
-  // ... same for rest of properties
 
   public int getId() {
     return id;
   }
+
   public void setId(int id) {
     this.id = id;
   }
+
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
@@ -39,19 +45,19 @@ public class User {
   }
 
   public String getFirstName() {
-    return firstName;
+    return first_name;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setFirstName(String first_name) {
+    this.first_name = first_name;
   }
 
   public String getLastName() {
-    return lastName;
+    return last_name;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public void setLastName(String last_name) {
+    this.last_name = last_name;
   }
 
   public String getEmail() {
@@ -71,11 +77,11 @@ public class User {
   }
 
   public String getDateOfBirth() {
-    return dateOfBirth;
+    return date_of_birth;
   }
 
-  public void setDateOfBirth(String dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
+  public void setDateOfBirth(String date_of_birth) {
+    this.date_of_birth = date_of_birth;
   }
 
   public String getRole() {
@@ -85,6 +91,4 @@ public class User {
   public void setRole(String role) {
     this.role = role;
   }
-
-  // ... same for rest of the properties
 }
