@@ -16,7 +16,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	@PostMapping("/register")
+	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
