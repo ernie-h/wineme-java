@@ -58,17 +58,15 @@
 
 				fetch('http://localhost:8080/api/user', {
 					method: 'post',
-					body: userObjStr,
 					headers: {
 						contentType: 'application/json'
-					}
+					},
+					body: userObjStr
 				});
 		} else {
 			alert('Please fill in all fields before creating a user');
 		}
 	}
-
-
 	// function findAllUsers() { … }
     // function findUserById() { … }
     // function deleteUser() { … }

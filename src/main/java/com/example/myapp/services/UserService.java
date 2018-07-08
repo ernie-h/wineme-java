@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myapp.webdev.models.User;
-import com.example.myapp.webdev.repositories.UserRepository;
+import com.example.myapp.models.User;
+import com.example.myapp.repositories.UserRepository;
 
 @RestController
 public class UserService {
-	@Autowired //instantiate and hold
-					UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 
-	@PostMapping("/api/user")
-	public User test(@RequestBody User user) {
+	@PostMapping("/register")
+	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
 
