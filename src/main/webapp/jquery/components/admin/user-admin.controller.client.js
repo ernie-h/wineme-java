@@ -24,6 +24,7 @@
 
 		$userRowTemplate = $('.wbdv-template.wbdv-user').clone();
 		$tbody = $('.wbdv-tbody');
+		findAllUsers();
 
 		$createBtn.click(createUser);
 	}
@@ -59,7 +60,9 @@
 		}
 	}
 
-	// function findAllUsers() { … }
+	function findAllUsers() {
+		userService.findAllUsers();
+	}
     // function findUserById() { … }
     // function deleteUser() { … }
     // function selectUser() { … }
