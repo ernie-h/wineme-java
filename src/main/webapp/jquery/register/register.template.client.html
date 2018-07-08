@@ -13,35 +13,37 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1> Sign up </h1>
-    <p> Please login with your data</p>
+    <div class="wbdv-app">
+      <h1> Sign up </h1>
+      <p> Please login with your data</p>
 
-    <div>
-      <label for="username">
-        Username
-      </label>
-      <input type="text"
-             placeholder="Ernie"
-             id="username"/>
+      <div class"register-form">
+        <div class="groupFld">
+          <label for="username">
+            Username
+          </label>
+          <input type="text"
+                 placeholder="Ernie"
+                 id="username"/>
+        </div>
+
+        <div class="groupFld">
+          <label for="password">
+            Password
+          </label>
+          <input type="password" id="password"/>
+        </div>
+
+        <div class="groupFld">
+          <label for="password2">
+            Validate Password
+          </label>
+          <input type="password" id="password2"/>
+        </div>
     </div>
-
-    <div>
-      <label for="password">
-        Password
-      </label>
-      <input type="password" id="password"/>
+      <button id="registerBtn"> Register </button>
+      <a href="/login.template.client.html"> Sign up! </a>
     </div>
-
-    <div>
-      <label for="password2">
-        Validate Password
-      </label>
-      <input type="password" id="password2"/>
-    </div>
-
-    <button id="registerBtn"> Register </button>
-
-    <a href="/login.template.client.html"> Log in! </a>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
