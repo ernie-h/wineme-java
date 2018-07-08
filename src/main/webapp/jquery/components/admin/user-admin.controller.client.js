@@ -5,10 +5,10 @@
 	var $removeBtn, $editBtn, $createBtn;
 	var $userRowTemplate, $tbody;
 
-	//var userService = new AdminUserServiceClient();
+	var userService = new AdminUserServiceClient();
+	console.log(userService);
 	$(main);
 	function main() {
-		console.log('Main func hit');
 		$usernameFld = $('#usernameFld');
 		$passwordFld = $('#passwordFld');
 		$firstNameFld = $('#firstNameFld');
@@ -29,7 +29,6 @@
 	}
 
 	function createUser() {
-		console.log('Create User hit');
 		var $usernameStr = $usernameFld.val();
 		var $passwordStr = $passwordFld.val();
 		var $firstNameStr = $firstNameFld.val();
@@ -51,27 +50,29 @@
 					date_of_birth: $dateOfBirthStr,
 					role: $roleStr
 				};
-				var userObjStr = JSON.stringify(userObj);
 
 				console.log(userObj);
-				console.log(userObjStr);
 
-				fetch('http://localhost:8080/api/user', {
-					method: 'post',
-					headers: {
-						contentType: 'application/json'
-					},
-					body: userObjStr
-				});
+				userService.createUser(userObj);
 		} else {
 			alert('Please fill in all fields before creating a user');
 		}
 	}
+
 	// function findAllUsers() { … }
     // function findUserById() { … }
     // function deleteUser() { … }
     // function selectUser() { … }
     // function updateUser() { … }
     // function renderUser(user) { … }
-	// function renderUsers(users) { … }
+
+	// 	function renderUsers(users) {
+	// 		$tbody.empty();
+	// 		for (var u in users) {
+	// 			var user = users[ u ];
+	// 			var $row = $userRowTemplate.clone();
+	// 			$row.find('.wbdv-username').html(user.username);
+	// 			$tbody.append($row);
+	// 	}
+	// }
 })();
