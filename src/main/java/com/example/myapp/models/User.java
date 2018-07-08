@@ -10,10 +10,10 @@ public class User {
   private String password;
   private String first_name;
   private String last_name;
-  // private String email;
-  // private String phone;
-  // private String date_of_birth;
-  // private String role;
+  private String phone;
+  private String role;
+  private String email;
+  private String date_of_birth;
 
   public int getId() {
     return id;
@@ -39,15 +39,15 @@ public class User {
     this.password = password;
   }
 
-  public String getFirstName() {
+  public String getFirst_name() {
     return first_name;
   }
 
-  public void setFirstName(String first_name) {
+  public void setFirst_name(String first_name) {
     this.first_name = first_name;
   }
 
-  public String getLastName() {
+  public String getLast_name() {
     return last_name;
   }
 
@@ -55,35 +55,35 @@ public class User {
     this.last_name = last_name;
   }
 
-  // public String getEmail() {
-  //   return email;
-  // }
-  //
-  // public void setEmail(String email) {
-  //   this.email = email;
-  // }
-  //
-  // public String getPhone() {
-  //   return phone;
-  // }
-  //
-  // public void setPhone(String phone) {
-  //   this.phone = phone;
-  // }
-  //
-  // public String getDateOfBirth() {
-  //   return date_of_birth;
-  // }
-  //
-  // public void setDateOfBirth(String date_of_birth) {
-  //   this.date_of_birth = date_of_birth;
-  // }
-  //
-  // public String getRole() {
-  //   return role;
-  // }
-  //
-  // public void setRole(String role) {
-  //   this.role = role;
-  // }
+   public String getEmail() {
+     return email;
+   }
+
+   public void setEmail(String email) {
+     this.email = email;
+   }
+
+   public String getPhone() {
+     return phone;
+   }
+
+   public void setPhone(String phone) {
+     this.phone = phone;
+   }
+
+   public String getDate_of_birth() {
+     return date_of_birth;
+   }
+
+   public void setDate_of_birth(String date_of_birth) {
+     this.date_of_birth = date_of_birth;
+   }
+
+   public String getRole() {
+     return role;
+   }
+
+   public void setRole(String role) {
+     this.role = role;
+   }
 }

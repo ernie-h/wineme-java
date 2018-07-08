@@ -10,7 +10,10 @@ function AdminUserServiceClient() {
   function createUser(user) {
      return fetch(self.url, {
          method: 'POST',
-         body: JSON.stringify(user)
+         body: JSON.stringify(user),
+         headers: {
+           'content-type': 'application/json'
+         }
      });
   }
   function findAllUsers(callback) {
