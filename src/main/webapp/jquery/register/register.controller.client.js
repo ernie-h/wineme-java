@@ -13,20 +13,31 @@
     var passwordStr = passwordFld.val();
     var passwordStr2 = passwordFld2.val();
 
-    var userObj = {
-      username: usernameStr,
-      password: passwordStr
-    };
+    if (usernameStr && passwordStr != null) {
+      var userObj = {
+        username: usernameStr,
+        password: passwordStr
+      };
+    }
 
     var userObjStr = JSON.stringify(userObj);
 		console.log(userObjStr);
 
-    fetch('/register', {
+    fetch('/api/register', {
       method: 'post',
       body: userObjStr,
       headers: {
-        contentType: 'application/json'
+        'content-type': 'application/json'
       }
-    });
+    })
+    .then(registrationSuccessful, registrationFailed);
+  }
+
+  function registrationSuccessful() {
+    window.location.href = '/profile.template.client.html'
+  }
+
+  function registrationFailed() {
+    alert('oops');
   }
 })();
