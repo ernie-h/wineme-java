@@ -24,14 +24,20 @@ function AdminUserServiceClient() {
   }
   function findUserById(userId) {
      return fetch(
-        self.url + '/' + userId);
+        self.url + '/' + userId)
+        .then(function(response) {
+          return response.json();
+        });
   }
 
   function updateUser(userId, user) {
      return fetch(self.url + '/' + userId, {
          method: 'PUT',
-         body: JSON.stringify(user)
-     });
+         body: JSON.stringify(user),
+         headers: {
+           'content-type': 'application/json'
+         }
+       });
   }
 
   function deleteUser(userId) {
