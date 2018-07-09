@@ -18,8 +18,8 @@
 		$dateOfBirthFld = $('#dateOfBirthFld');
 		$roleFld = $('#roleFld');
 
-		$removeBtn = $('#wbdv-remove');
-		$editBtn = $('#wbdv-edit');
+		$removeBtn = '.wbdv-remove';
+		$editBtn = '.wbdv-edit';
 		$createBtn = $('.wbdv-create');
 
 		$userRowTemplate = $('.wbdv-template.wbdv-user').clone();
@@ -64,37 +64,38 @@
 		userService.findAllUsers().then(renderUsers);
 	}
     // function findUserById() { … }
-    function deleteUser(event) {
-			var deleteBtn = $(event.currentTarget);
-			var userId = deleteBtn.parent().parent().attr('id');
+    function deleteUser() {
+			var removeBtn = $(event.currentTarget);
+			var userId = removeBtn.parent().parent().parent().attr('id');
 
 			userService.deleteUser(userId).then(findAllUsers);
 		}
     // function selectUser() { … }
     // function updateUser() { … }
-    // function renderUser(user) { … }
+    function renderUser(user) {
+			var $row = $userRowTemplate.clone();
+			$row.attr('id', user.id);
+
+			$row.find($removeBtn).click(deleteUser);
+			//$row.find($editBtn).click(editUser);
+
+			$row.find('.wbdv-username').html(user.username);
+			$row.find('.wbdv-password').html(user.password);
+			$row.find('.wbdv-first-name').html(user.first_name);
+			$row.find('.wbdv-last-name').html(user.last_name);
+			$row.find('.wbdv-email').html(user.email);
+			$row.find('.wbdv-phone').html(user.phone);
+			$row.find('.wbdv-dob').html(user.date_of_birth);
+			$row.find('.wbdv-role').html(user.role);
+
+			$tbody.append($row);
+		}
 
 		function renderUsers(users) {
 			$tbody.empty();
 			for (var u in users) {
 				var user = users[ u ];
-				var $row = $userRowTemplate.clone();
-				$row.attr('id', user.id);
-
-				$row.find('.wbdv-remove').click(deleteUser);
-				//$row.find('.wbdv-edit').click(editUser);
-
-				$row.find('.wbdv-username').html(user.username);
-				$row.find('.wbdv-password').html(user.password);
-				$row.find('.wbdv-first-name').html(user.first_name);
-				$row.find('.wbdv-last-name').html(user.last_name);
-				$row.find('.wbdv-email').html(user.email);
-				$row.find('.wbdv-phone').html(user.phone);
-				$row.find('.wbdv-dob').html(user.date_of_birth);
-				$row.find('.wbdv-role').html(user.role);
-
-				$tbody.append($row);
-
+				renderUser(user);
 		}
 	}
 })();
