@@ -1,6 +1,7 @@
 package com.example.myapp.models;
 
 import javax.persistence.*;
+
 @Entity
 public class User {
   @Id
