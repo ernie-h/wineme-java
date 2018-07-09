@@ -63,19 +63,40 @@
 	function findAllUsers() {
 		userService.findAllUsers().then(renderUsers);
 	}
-    // function findUserById() { … }
+    function findUserById() {
+			var editBtn = $(event.currentTarget);
+			var userId = editBtn.parent().parent().parent().attr('id');
+
+			// var user = editBtn.parent().parent().parent().find('#' + userId);
+			// console.log(user);
+			console.log(userService.findUserById(userId));
+			userService.findUserById(userId).then(populateValues());
+		}
+		function populateValues(user) {
+			$usernameFld.value = user.username;
+
+			// var $passwordStr = $passwordFld.val();
+			// var $firstNameStr = $firstNameFld.val();
+			// var $lastNameStr = $lastNameFld.val();
+			// var $emailStr = $emailFld.val();
+			// var $phoneStr = $phoneFld.val();
+			// var $dateOfBirthStr = $dateOfBirthFld.val();
+			// var $roleStr = $roleFld.val();
+			//
+		}
+
     function deleteUser() {
 			var removeBtn = $(event.currentTarget);
 			var userId = removeBtn.parent().parent().parent().attr('id');
 
 			userService.deleteUser(userId).then(findAllUsers);
 		}
-    // function selectUser() { … }
+
     // function updateUser() {
-		// 	var editBtn = $(event.currentTarget);
-		// 	var userId = editBtn.parent().parent().parent().attr('id');
-		//
-		// 	userService.updateUser(userId).then(findAllUsers);
+		// var user = {
+		// 	first_name: $firstNameStr,
+		// 	last_name: $lastNameStr,
+		// };
 		// }
     function renderUser(user) {
 			var $row = $userRowTemplate.clone();
@@ -91,7 +112,7 @@
 			$row.find('.wbdv-role').html(user.role);
 
 			$row.find($removeBtn).click(deleteUser);
-			//$row.find($editBtn).click(updateUser);
+			$row.find($editBtn).click(findUserById);
 
 
 			$tbody.append($row);
