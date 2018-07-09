@@ -71,13 +71,15 @@
 			userService.deleteUser(userId).then(findAllUsers);
 		}
     // function selectUser() { … }
-    // function updateUser() { … }
+    // function updateUser() {
+		// 	var editBtn = $(event.currentTarget);
+		// 	var userId = editBtn.parent().parent().parent().attr('id');
+		//
+		// 	userService.updateUser(userId).then(findAllUsers);
+		// }
     function renderUser(user) {
 			var $row = $userRowTemplate.clone();
 			$row.attr('id', user.id);
-
-			$row.find($removeBtn).click(deleteUser);
-			//$row.find($editBtn).click(editUser);
 
 			$row.find('.wbdv-username').html(user.username);
 			$row.find('.wbdv-password').html(user.password);
@@ -87,6 +89,10 @@
 			$row.find('.wbdv-phone').html(user.phone);
 			$row.find('.wbdv-dob').html(user.date_of_birth);
 			$row.find('.wbdv-role').html(user.role);
+
+			$row.find($removeBtn).click(deleteUser);
+			//$row.find($editBtn).click(updateUser);
+
 
 			$tbody.append($row);
 		}
