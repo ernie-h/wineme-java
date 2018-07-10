@@ -2,7 +2,7 @@
 	var $userId, $usernameFld, $passwordFld;
 	var $firstNameFld, $lastNameFld;
 	var $emailFld, $phoneFld, $dateOfBirthFld, $roleFld;
-	var $removeBtn, $editBtn, $createBtn;
+	var $removeBtn, $editBtn, $createBtn, $searchBtn;
 	var $userRowTemplate, $tbody;
 	var $usernameStr, $passwordStr;
 	var $firstNameStr, $lastNameStr;
@@ -23,6 +23,7 @@
 		$removeBtn = '.wbdv-remove';
 		$editBtn = '.wbdv-edit';
 		$createBtn = $('.wbdv-create');
+		$searchBtn = $('.wbdv-search');
 
 		$userRowTemplate = $('.wbdv-template.wbdv-user').clone();
 		$tbody = $('.wbdv-tbody');
@@ -62,9 +63,8 @@
 		valueInit();
 		if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
 				$emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
-				userService.createUser(
-					userObjInit($usernameStr, $passwordStr, $firstNameStr, $lastNameStr,
-											$emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
+				userService.createUser(new User($usernameStr, $passwordStr, $firstNameStr,
+					$lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
 				.then(findAllUsers);
 		} else {
 			alert('Please fill in all fields before creating a user');
@@ -94,15 +94,27 @@
 		$dateOfBirthFld.val(d);
 		$roleFld.val(user.role);
 		var $updateBtn = $('.wbdv-update');
+		$createBtn.hide();
+		//$searchBtn.hide();
 		$updateBtn.click(updateUser);
 	}
 
 	function updateUser() {
 		valueInit();
-		userService.updateUser($userId,
-			userObjInit($usernameStr, $passwordStr, $firstNameStr, $lastNameStr,
-									$emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
-									.then(findAllUsers);
+		$usernameFld.val('');
+		$passwordFld.val('');
+		$firstNameFld.val('');
+		$lastNameFld.val('');
+		$emailFld.val('');
+		$phoneFld.val('');
+		$dateOfBirthFld.val('');
+		$roleFld.val('');
+
+		$createBtn.show();
+		userService.updateUser(
+			$userId, new User($usernameStr, $passwordStr, $firstNameStr, $lastNameStr,
+												$emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
+			.then(findAllUsers);
 	}
 
   function deleteUser() {
