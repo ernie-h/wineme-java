@@ -76,7 +76,8 @@ function AdminUserServiceClient() {
       body: JSON.stringify({ username: username, password: password }),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      'credentials': 'include'
     })
     .then(loginSuccessful);
   }
