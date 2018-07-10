@@ -3,6 +3,8 @@ package com.example.myapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,5 +62,17 @@ public class UserService {
 			return user;
 		}
 		return null;
+	}
+	@PostMapping("/api/register")
+	public User register(@RequestBody User user, HttpSession session) {
+		Optional<User> existingUser = userRepository.findUserByUsername(user.getUsername());
+		if(existingUser.isPresent()) {
+			throw new IllegalArgumentException("Username is duplicate");
+		}
+		else {
+			User currentUser = userRepository.save(user);
+			session.setAttribute("currentUser", currentUser);
+		return currentUser;
+		}
 	}
 }
