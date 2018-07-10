@@ -5,7 +5,9 @@ function AdminUserServiceClient() {
   this.deleteUser = deleteUser;
   this.updateUser = updateUser;
   this.register = register;
+  this.login = login;
   this.registerUrl = 'http://localhost:8080/api/register';
+  this.loginUrl = 'http://localhost:8080/api/login';
   this.url = 'http://localhost:8080/api/user';
   var self = this;
 
@@ -60,11 +62,30 @@ function AdminUserServiceClient() {
   }
 
   function registrationSuccessful(response) {
-    console.log(response.status);
     if (response.status === 200) {
-      window.location.href = '/profile.template.client.html';
+      window.location.href = '/jquery/profile/profile.template.client.html';
     } else {
       $('#username-alert').show();
+    }
+  }
+
+  function login(username, password) {
+    console.log('fetch hit');
+    return fetch(self.loginUrl, {
+      method: 'POST',
+      body: JSON.stringify({ username: username, password: password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(loginSuccessful);
+  }
+
+  function loginSuccessful(response) {
+    if (response.status === 200) {
+      window.location.href = '/jquery/profile/profile.template.client.html';
+    } else {
+      alert('No user with credentials found. Please try again.');
     }
   }
 }
