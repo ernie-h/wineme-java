@@ -75,4 +75,17 @@ public class UserService {
 		return currentUser;
 		}
 	}
+
+	@PostMapping("/api/login")
+	public Optional<User> login(@RequestBody User user, HttpSession session) {
+		Optional<User> existingUser = userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+		if(existingUser.isPresent()) {
+			session.setAttribute("user", existingUser);
+		}
+		else {
+			throw new IllegalArgumentException("No user found with credentials.");
+		}
+		return existingUser;
+	}
+
 }

@@ -1,5 +1,5 @@
 (function() {
-  var $userId, $usernameFld, $passwordFld;
+  var $usernameFld, $passwordFld;
   var $firstNameFld, $lastNameFld;
   var $emailFld, $phoneFld, $dateOfBirthFld, $roleFld;
   var $registerBtn;
@@ -26,10 +26,10 @@
       $('#username-alert').hide();
     });
 
-    $registerBtn.click(registerHandler);
+    $registerBtn.click(register);
   }
 
-  function registerHandler() {
+  function register() {
      $usernameStr = $usernameFld.val();
      $passwordStr = $passwordFld.val();
      $firstNameStr = $firstNameFld.val();
@@ -49,4 +49,12 @@
       alert('Please fill in all fields.');
     }
   }
+
+  // function registrationSuccessful(response) {
+  //   if (response.status === 200) {
+  //     window.location.href = '/jquery/profile/profile.template.client.html';
+  //   } else {
+  //     $('#username-alert').show();
+  //   }
+  // }
 })();
