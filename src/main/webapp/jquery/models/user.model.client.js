@@ -1,11 +1,13 @@
-function User(username, password, firstName, lastName, phone, role, dateOfBirth) {
+/*eslint-disable camelcase*/
+function User(username, password, first_name, last_name, email, phone, date_of_birth, role) {
 	this.username = username;
 	this.password = password;
-	this.firstName = firstName;
-	this.lastName = lastName;
+	this.first_name = first_name;
+	this.last_name = last_name;
+	this.email = email;
 	this.phone = phone;
 	this.role = role;
-	this.dateOfBirth = dateOfBirth;
+	this.date_of_birth = date_of_birth;
 
 
 	//Setters/getters assignment
@@ -17,6 +19,8 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
 	this.getFirstName = getFirstName;
 	this.setLastName = setLastName;
 	this.getLastName = getLastName;
+	this.setEmail = setEmail;
+	this.getEmail = getEmail;
 	this.setPhone = setPhone;
 	this.getPhone = getPhone;
 	this.setRole = setRole;
@@ -37,17 +41,23 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
 	function getPassword() {
 		return this.password;
 	}
-	function setFirstName(firstName) {
-		this.firstName = firstName;
+	function setFirstName(first_name) {
+		this.first_name = first_name;
 	}
 	function getFirstName() {
-		return this.firstName;
+		return this.first_name;
 	}
-	function setLastName(lastName) {
-		this.lastName = lastName;
+	function setLastName(last_name) {
+		this.last_name = last_name;
 	}
 	function getLastName() {
 		return this.lastName;
+	}
+	function setEmail(email) {
+		this.email = email;
+	}
+	function getEmail() {
+		return this.email;
 	}
 	function setPhone(phone) {
 		this.phone = phone;
@@ -61,10 +71,10 @@ function User(username, password, firstName, lastName, phone, role, dateOfBirth)
 	function getRole() {
 		return this.role;
 	}
-	function setDateOfBirth(dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	function setDateOfBirth(date_of_birth) {
+		this.date_of_birth = date_of_birth;
 	}
 	function getDateOfBirth() {
-		return this.dateOfBirth;
+		return this.date_of_birth;
 	}
 }
