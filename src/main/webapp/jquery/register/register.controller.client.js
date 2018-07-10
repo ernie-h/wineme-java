@@ -1,43 +1,52 @@
-(function init() {
-  var registerBtn = $('#registerBtn');
+(function() {
+  var $userId, $usernameFld, $passwordFld;
+  var $firstNameFld, $lastNameFld;
+  var $emailFld, $phoneFld, $dateOfBirthFld, $roleFld;
+  var $registerBtn;
+  var $usernameStr, $passwordStr;
+  var $firstNameStr, $lastNameStr;
+  var $emailStr, $phoneStr, $dateOfBirthStr, $roleStr;
+  var userService = new AdminUserServiceClient();
+  $(main);
 
-  var usernameFld = $('#username');
-  var passwordFld = $('#password');
-  var passwordFld2 = $('#password2');
+  function main() {
+    $usernameFld = $('#usernameFld');
+    $passwordFld = $('#passwordFld');
+    $firstNameFld = $('#firstNameFld');
+    $lastNameFld = $('#lastNameFld');
+    $emailFld = $('#emailFld');
+    $phoneFld = $('#phoneFld');
+    $dateOfBirthFld = $('#dateOfBirthFld');
+    $roleFld = $('#roleFld');
+    $registerBtn = $('#registerBtn');
 
-  registerBtn.click(registerHandler);
-  registerBtn.css('color', 'red');
+    //Toggle popup for duplicate username
+    $('#username-alert').hide();
+    $('.close').click(function() {
+      $('#username-alert').hide();
+    });
+
+    $registerBtn.click(registerHandler);
+  }
 
   function registerHandler() {
-    var usernameStr = usernameFld.val();
-    var passwordStr = passwordFld.val();
-    var passwordStr2 = passwordFld2.val();
+     $usernameStr = $usernameFld.val();
+     $passwordStr = $passwordFld.val();
+     $firstNameStr = $firstNameFld.val();
+     $lastNameStr = $lastNameFld.val();
+     $emailStr = $emailFld.val();
+     $phoneStr = $phoneFld.val();
+     $dateOfBirthStr = $dateOfBirthFld.val();
+     $roleStr = $roleFld.val();
 
-    if (usernameStr && passwordStr != null) {
-      var userObj = {
-        username: usernameStr,
-        password: passwordStr
-      };
+    // var passwordStr2 = passwordFld2.val();
+
+    if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
+        $emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
+        userService.register(new User($usernameStr, $passwordStr, $firstNameStr,
+          $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr));
+    } else {
+      alert('Please fill in all fields.');
     }
-
-    var userObjStr = JSON.stringify(userObj);
-		console.log(userObjStr);
-
-    fetch('/api/register', {
-      method: 'post',
-      body: userObjStr,
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then(registrationSuccessful, registrationFailed);
-  }
-
-  function registrationSuccessful() {
-    window.location.href = '/profile.template.client.html'
-  }
-
-  function registrationFailed() {
-    alert('oops');
   }
 })();

@@ -44,21 +44,6 @@
 		$roleStr = $roleFld.val();
 	}
 
-	function userObjInit(username, password, firstName, lastName, email, phone,
-												dateOfBirth, role) {
-		var userObj = {
-			username: username,
-			password: password,
-			first_name: firstName,
-			last_name: lastName,
-			email: email,
-			phone: phone,
-			date_of_birth: dateOfBirth,
-			role: role
-		};
-		return userObj;
-	}
-
 	function createUser() {
 		valueInit();
 		if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&

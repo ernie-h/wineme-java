@@ -14,40 +14,79 @@
   </head>
   <body>
     <div class="wbdv-app">
-      <h1> Sign up </h1>
-      <p> Please login with your data</p>
-
-      <div class"register-form">
-        <div class="groupFld">
-          <label for="username">
-            Username
-          </label>
-          <input type="text"
-                 placeholder="Ernie"
-                 id="username"/>
+      <div class="headers">
+        <div id="username-alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>O boy!</strong> That username is already taken. Choose a new one!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
-        <div class="groupFld">
-          <label for="password">
-            Password
-          </label>
-          <input type="password" id="password"/>
+        <h1> Sign up </h1>
+        <p> Please register for a new account.</p>
+    </div>
+      <div class="register-form">
+        <div class="inputGroup">
+          <div class="inputFld">
+            <label for="username"class="sr-only">
+              Username
+            </label>
+            <input id="usernameFld" type="text" placeholder="Username"/>
+          </div>
+          <div class="inputFld">
+            <label for="password" class="sr-only">
+              Password
+            </label>
+            <input id="passwordFld" type="password" placeholder="Password"/>
+          </div>
+          <!-- <div class="inputFld">
+            <label for="password2" class="sr-only">
+              Validate Password
+            </label>
+            <input id="password2" type="password" placeholder="Verify password"/>
+          </div> -->
+          <div class="inputFld">
+            <label for="firstNameFld" class="sr-only">First name</label>
+            <input id="firstNameFld" type="text" placeholder="First name"/>
+          </div>
+          <div class="inputFld">
+            <label for="lastNameFld" class="sr-only">Last Name</label>
+            <input id="lastNameFld" type="text" placeholder="Last name"/>
+          </div>
+          <div class="inputFld">
+            <label for="emailFld" class="sr-only"> Email</label>
+            <input id="emailFld" type="email" placeholder="Email"/>
+          </div>
+          <div class="inputFld">
+            <label for="phoneFld" class="sr-only"> Phone</label>
+            <input id="phoneFld" type="number" placeholder="phone"/>
+          </div>
+          <div class="inputFld">
+            <label for="dateOfBirthFld" class="sr-only"> Date of birth</label>
+            <input id="dateOfBirthFld" type="date" placeholder="Date of birth"/>
+          </div>
+          <div class="inputFld">
+            <select id="roleFld" class="form-control">
+              <option value="" disabled selected>Select role</option>
+              <option value="FACULTY">Faculty</option>
+              <option value="STUDENT">Student</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
         </div>
+        <div class="links">
+          <button id="registerBtn" class="btn btn-primary"> Register </button>
+          <a href="/jquery/login/login.template.client.html"> Log in </a>
+        </div>
+      </div>
+    </div>
 
-        <span class="groupFld">
-          <label for="password2">
-            Validate Password
-          </label>
-          <input type="password" id="password2"/>
-        </span>
-    </div>
-      <button id="registerBtn"> Register </button>
-      <a href="/login.template.client.html"> Sign up! </a>
-    </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../models/user.model.client.js"></script>
+    <script type="text/javascript" src="../services/user.service.client.js"></script>
+    <script type="text/javascript" src="../components/admin/user-admin.controller.client.js"></script>
     <script type="text/javascript" src="register.controller.client.js"></script>
   </body>
 </html>

@@ -1,4 +1,32 @@
-.wbdv-app{
-  width:20%;
-  margin:50px auto;
+
+.wbdv-app {
+  margin: 100px;
+  text-align:center;
+
+}
+.register-form {
+  text-align: center;
+
+}
+.inputGroup {
+  display:inline-block;
+  align-items: center;
+  padding: 5px;
+}
+.inputFld {
+  width: 185px;
+  padding:5px;
+  margin:5px;
+
+}
+.headers {
+  margin-bottom: -20px;
+}
+
+input {
+  border-radius: 3px;
+  color: white:
+}
+
+
 }
