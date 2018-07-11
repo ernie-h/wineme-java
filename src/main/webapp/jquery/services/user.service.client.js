@@ -63,16 +63,7 @@ function AdminUserServiceClient() {
         'Content-Type': 'application/json'
       },
       'credentials': 'include'
-    })
-    .then(registrationSuccessful);
-  }
-
-  function registrationSuccessful(response) {
-    if (response.status === 200) {
-      window.location.href = '/jquery/profile/profile.template.client.html';
-    } else {
-      $('#username-alert').show();
-    }
+    });
   }
 
   function login(username, password) {
@@ -83,16 +74,7 @@ function AdminUserServiceClient() {
         'Content-Type': 'application/json'
       },
       'credentials': 'include'
-    })
-    .then(loginSuccessful);
-  }
-
-  function loginSuccessful(response) {
-    if (response.status === 200) {
-      window.location.href = '/jquery/profile/profile.template.client.html';
-    } else {
-      alert('No user with credentials found. Please try again.');
-    }
+    });
   }
 
   function updateProfile(user) {
@@ -104,23 +86,13 @@ function AdminUserServiceClient() {
         'Content-Type': 'application/json'
       },
       'credentials': 'include'
-    })
-    .then(updateProfileSuccessful);
-  }
-
-  function updateProfileSuccessful(response) {
-    if (response.status === 200) {
-      alert('Update success.')
-    } else {
-      alert('Invalid session. Has to be right?');
-    }
+    });
   }
 
   function getProfile() {
     return fetch(self.updateProfileUrl, {
       'credentials': 'include'
-    })
-       .then(function(response) {
+    }).then(function(response) {
          return response.json();
        });
   }
@@ -129,12 +101,6 @@ function AdminUserServiceClient() {
     return fetch(self.registerUrl, {
       method: 'POST',
       'credentials': 'include'
-    })
-    .then(logoutSuccess);
-  }
-
-  function logoutSuccess() {
-      window.location.href = '/jquery/login/login.template.client.html';
-      alert('Logout success!')
+    });
   }
 }

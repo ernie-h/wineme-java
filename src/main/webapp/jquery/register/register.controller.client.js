@@ -44,17 +44,19 @@
     if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
         $emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
         userService.register(new User($usernameStr, $passwordStr, $firstNameStr,
-          $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr));
+          $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
+          .then(registrationAlertHandler);
     } else {
       alert('Please fill in all fields.');
     }
   }
 
-  // function registrationSuccessful(response) {
-  //   if (response.status === 200) {
-  //     window.location.href = '/jquery/profile/profile.template.client.html';
-  //   } else {
-  //     $('#username-alert').show();
-  //   }
-  // }
+  function registrationAlertHandler(response) {
+    if (response.status === 200) {
+      window.location.href = '/jquery/profile/profile.template.client.html';
+    } else {
+      $('#username-alert').show();
+    }
+  }
+
 })();
