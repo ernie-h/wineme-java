@@ -78,7 +78,6 @@ function AdminUserServiceClient() {
   }
 
   function updateProfile(user) {
-    console.log(user);
     return fetch(self.updateProfileUrl, {
       method: 'PUT',
       body: JSON.stringify(user),
