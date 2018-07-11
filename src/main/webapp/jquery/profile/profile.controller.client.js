@@ -3,7 +3,6 @@
   var $firstNameFld, $lastNameFld;
   var $phoneFld, $dateOfBirthFld;
   var $roleFld, $emailFld;
-  var $userId;
   var $updateBtn, $logoutBtn;
   var $usernameStr, $passwordStr;
   var $firstNameStr, $lastNameStr;
@@ -60,11 +59,26 @@
      $phoneStr = $phoneFld.val();
      $dateOfBirthStr = $dateOfBirthFld.val();
      $roleStr = $roleFld.val();
-     userService.updateProfile(new User($usernameStr, $passwordStr, $firstNameStr,
-          $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr));
+     userService.updateProfile(new User
+       ($usernameStr, $passwordStr, $firstNameStr, $lastNameStr, $emailStr,
+         $phoneStr, $dateOfBirthStr, $roleStr))
+          .then(updateProfileAlertHandler);
+  }
+
+  function updateProfileAlertHandler(response) {
+    if (response.status === 200) {
+      alert('Update success.');
+    } else {
+      alert('Invalid session. Has to be right?');
+    }
   }
 
   function logout() {
-    userService.logout();
+    userService.logout().then(logoutAlertHandler);
+  }
+
+  function logoutAlertHandler() {
+      window.location.href = '/jquery/login/login.template.client.html';
+      alert('Logout success!');
   }
 })();
