@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.myapp.models.User;
-import com.example.myapp.repositories.UserRepository;
+
+import com.example.myapp.models.*;
+import com.example.myapp.repositories.*;
+
 
 @RestController
 public class UserService {
@@ -45,6 +47,7 @@ public class UserService {
 		}
 		return null;
 	}
+
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
 		Optional<User> data = userRepository.findById(userId);
@@ -63,6 +66,7 @@ public class UserService {
 		}
 		return null;
 	}
+
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) {
 		Optional<User> existingUser = userRepository.findUserByUsername(user.getUsername());
@@ -71,7 +75,7 @@ public class UserService {
 		}
 		else {
 			User currentUser = userRepository.save(user);
-			session.setAttribute("currentUser", currentUser);
+			session.setAttribute("user", currentUser);
 		return currentUser;
 		}
 	}
@@ -81,11 +85,24 @@ public class UserService {
 		Optional<User> existingUser = userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
 		if(existingUser.isPresent()) {
 			session.setAttribute("user", existingUser);
+			return existingUser;
 		}
 		else {
 			throw new IllegalArgumentException("No user found with credentials.");
 		}
-		return existingUser;
+	}
+
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User newUser, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		int sessionUserId = sessionUser.getId();
+		return this.updateUser(sessionUserId, newUser);
+	}
+
+	@GetMapping("/api/profile")
+	public Optional<User> profile(HttpSession session) {
+		User currentUser = (User) session.getAttribute("user");
+		return userRepository.findById(currentUser.getId());
 	}
 
 }

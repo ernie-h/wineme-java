@@ -15,6 +15,18 @@ public class User {
   private String role;
   private String email;
   private String date_of_birth;
+  
+  public void set(User newUser) {
+		this.username = newUser.username != null ?
+	newUser.username : this.username; 
+		this.password = newUser.password != null ?
+	newUser.password : this.password; 
+		this.first_name = newUser.first_name != null ?
+	newUser.first_name : this.first_name; 
+		this.last_name = newUser.last_name != null ?
+	newUser.last_name : this.last_name; 
+	}
+
 
   public int getId() {
     return id;

@@ -6,9 +6,13 @@ function AdminUserServiceClient() {
   this.updateUser = updateUser;
   this.register = register;
   this.login = login;
-  this.registerUrl = 'http://localhost:8080/api/register';
-  this.loginUrl = 'http://localhost:8080/api/login';
-  this.url = 'http://localhost:8080/api/user';
+  this.updateProfile = updateProfile;
+  this.getProfile = getProfile;
+
+  this.url = '/api/user';
+  this.registerUrl = '/api/register';
+  this.loginUrl = '/api/login';
+  this.updateProfileUrl = '/api/profile';
   var self = this;
 
   function createUser(user) {
@@ -70,7 +74,6 @@ function AdminUserServiceClient() {
   }
 
   function login(username, password) {
-    console.log('fetch hit');
     return fetch(self.loginUrl, {
       method: 'POST',
       body: JSON.stringify({ username: username, password: password }),
@@ -88,5 +91,39 @@ function AdminUserServiceClient() {
     } else {
       alert('No user with credentials found. Please try again.');
     }
+  }
+
+  function updateProfile(user) {
+    console.log(user);
+    return fetch(self.updateProfileUrl, {
+      method: 'PUT',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      'credentials': 'include'
+    })
+    .then(updateProfileSuccessful);
+  }
+
+  function updateProfileSuccessful(response) {
+    console.log("Update Profile handler");
+
+    if (response.status === 200) {
+
+      //window.location.href = '/jquery/profile/profile.template.client.html';
+      alert('Update success. Please double check Ernie.')
+    } else {
+      alert('Invalid session. Has to be right?');
+    }
+  }
+
+  function getProfile() {
+    return fetch(self.updateProfileUrl, {
+      'credentials': 'include'
+    })
+       .then(function(response) {
+         return response.json();
+       });
   }
 }
