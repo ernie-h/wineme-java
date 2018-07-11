@@ -34,8 +34,6 @@
 
   }
   function populateValues(user) {
-    console.log(user);
-    $userId = user.id;
     $usernameFld.val(user.username);
     $passwordFld.val(user.password);
     $firstNameFld.val(user.first_name);
@@ -79,6 +77,5 @@
 
   function logoutAlertHandler() {
       window.location.href = '/jquery/login/login.template.client.html';
-      alert('Logout success!');
   }
 })();

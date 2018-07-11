@@ -8,78 +8,103 @@
       "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href=
       "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+      <link rel="stylesheet" href="css/bootstrap-responsive.css">
     <link href="register.style.client.css" rel="stylesheet" />
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="wbdv-app">
-      <div class="headers">
-        <div id="username-alert" class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>O boy!</strong> That username is already taken. Choose a new one!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <h1> Sign up </h1>
-        <p> Please register for a new account.</p>
-    </div>
-      <div class="register-form">
-        <div class="inputGroup">
-          <div class="inputFld">
-            <label for="username"class="sr-only">
-              Username
-            </label>
-            <input id="usernameFld" type="text" placeholder="Username"/>
-          </div>
-          <div class="inputFld">
-            <label for="password" class="sr-only">
-              Password
-            </label>
-            <input id="passwordFld" type="password" placeholder="Password"/>
-          </div>
-          <!-- <div class="inputFld">
-            <label for="password2" class="sr-only">
-              Validate Password
-            </label>
-            <input id="password2" type="password" placeholder="Verify password"/>
-          </div> -->
-          <div class="inputFld">
-            <label for="firstNameFld" class="sr-only">First name</label>
-            <input id="firstNameFld" type="text" placeholder="First name"/>
-          </div>
-          <div class="inputFld">
-            <label for="lastNameFld" class="sr-only">Last Name</label>
-            <input id="lastNameFld" type="text" placeholder="Last name"/>
-          </div>
-          <div class="inputFld">
-            <label for="emailFld" class="sr-only"> Email</label>
-            <input id="emailFld" type="email" placeholder="Email"/>
-          </div>
-          <div class="inputFld">
-            <label for="phoneFld" class="sr-only"> Phone</label>
-            <input id="phoneFld" type="number" placeholder="phone"/>
-          </div>
-          <div class="inputFld">
-            <label for="dateOfBirthFld" class="sr-only"> Date of birth</label>
-            <input id="dateOfBirthFld" type="date" placeholder="Date of birth"/>
-          </div>
-          <div class="inputFld">
-            <select id="roleFld" class="form-control">
-              <option value="" disabled selected>Select role</option>
-              <option value="FACULTY">Faculty</option>
-              <option value="STUDENT">Student</option>
-              <option value="ADMIN">Admin</option>
-            </select>
+        <div class="container">
+          <div class="jumbotron container">
+            <h1 class="display-3"><strong>Whiteboard</strong></h1>
+            <em class="display-3">Where students thrive.</em>
+            <p class="lead">Welcome to Whiteboard! If you don't already have an
+                            account please register here for a new one. Happy hacking!</p>
+            <hr class="my-10">
+            <p> Already have an account? </p>
+            <a class="btn btn-lg btn-success"
+                href="/jquery/login/login.template.client.html" role="button">
+               Log in here</a>
           </div>
         </div>
-        <div class="links">
-          <button id="registerBtn" class="btn btn-primary"> Register </button>
-          <a href="/jquery/login/login.template.client.html"> Log in </a>
+        <div class="container">
+          <div class="form-group row">
+            <label for="username" class="col-lg-2 col-form-label">
+              Username </label>
+            <div class="col-lg-10">
+              <input class="form-control" id="usernameFld" placeholder="ehao">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="passwordFld" class="col-lg-2 col-form-label">
+              Password </label>
+            <div class="col-lg-10">
+              <input type="password" class="form-control" id="passwordFld"
+              placeholder="hello123">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="passwordFld2" class="col-lg-2 col-form-label">
+              Validate password </label>
+            <div class="col-lg-10">
+              <input type="password" class="form-control" id="passwordFld2"
+              placeholder="hello123">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="firstNameFld" class="col-lg-2 col-form-label">
+              First Name </label>
+            <div class="col-lg-10">
+              <input class="form-control" id="firstNameFld" placeholder="Ernie">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="lastNameFld" class="col-lg-2 col-form-label">
+              Last name </label>
+            <div class="col-lg-10">
+              <input class="form-control" id="lastNameFld" placeholder="Hao">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="emailFld" class="col-lg-2 col-form-label">
+              Email </label>
+            <div class="col-lg-10">
+              <input class="form-control" id="emailFld" placeholder="hao.e@gmail.com">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="phoneFld" class="col-lg-2 col-form-label">
+              Phone </label>
+            <div class="col-lg-10">
+              <input class="form-control" id="phoneFld" placeholder="617-651-7125">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="dateOfBirthFld" class="col-lg-2 col-form-label">
+              Date of Birth </label>
+            <div class="col-lg-10">
+              <input type="date" class="form-control" id="dateOfBirthFld"
+              placeholder="09/22/1998">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="dateOfBirthFld" class="col-lg-2 col-form-label">
+              Role </label>
+            <div class="col-lg-10">
+              <select id="roleFld" class="form-control">
+                <option value="" disabled selected>Select role</option>
+                <option value="FACULTY">Faculty</option>
+                <option value="STUDENT">Student</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+          </div>
         </div>
+      <div class="links">
+        <button id="registerBtn" class="btn btn-lg btn-primary"> Register here </button>
       </div>
     </div>
-
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

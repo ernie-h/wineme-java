@@ -1,4 +1,7 @@
 .wbdv-body {
-  margin: 100px 0 0 300px;
-  width: 50%;
+  margin: 0 0 100px 0;
+  text-align: center;
+}
+.container {
+  text-align: left;
 }

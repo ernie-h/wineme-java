@@ -9,8 +9,6 @@ function User(username, password, first_name, last_name, email, phone, date_of_b
 	this.role = role;
 	this.date_of_birth = date_of_birth;
 
-
-	//Setters/getters assignment
 	this.setUsername = setUsername;
 	this.getUsername = getUsername;
 	this.setPassword = setPassword;
@@ -28,7 +26,6 @@ function User(username, password, first_name, last_name, email, phone, date_of_b
 	this.setDateOfBirth = setDateOfBirth;
 	this.getDateOfBirth = getDateOfBirth;
 
-	//Setters/getters functions
 	function setUsername(username) {
 		this.username = username;
 	}
