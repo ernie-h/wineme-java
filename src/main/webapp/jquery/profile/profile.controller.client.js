@@ -23,10 +23,11 @@
 
     $roleFld = $('#roleFld');
     $updateBtn = $('#updateBtn');
-    $logoutBtn = $('logoutBtn');
+    $logoutBtn = $('#logoutBtn');
 
     getProfile();
     $updateBtn.click(updateProfile);
+    $logoutBtn.click(logout);
   }
 
   function getProfile() {
@@ -48,30 +49,22 @@
     d = d.substring(0, d.indexOf(' '));
     $dateOfBirthFld.val(d);
     $roleFld.val(user.role);
-
   }
 
   function updateProfile() {
-
      $usernameStr = $usernameFld.val();
      $passwordStr = $passwordFld.val();
      $firstNameStr = $firstNameFld.val();
      $lastNameStr = $lastNameFld.val();
-
      $emailStr = $emailFld.val();
      $phoneStr = $phoneFld.val();
      $dateOfBirthStr = $dateOfBirthFld.val();
-
      $roleStr = $roleFld.val();
-
-     console.log($usernameStr);
-     console.log($passwordStr);
-     console.log($firstNameStr);
-     console.log($lastNameStr);
-     console.log($phoneStr);
-     console.log($dateOfBirthStr);
-
      userService.updateProfile(new User($usernameStr, $passwordStr, $firstNameStr,
           $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr));
+  }
+
+  function logout() {
+    userService.logout();
   }
 })();
