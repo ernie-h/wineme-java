@@ -18,6 +18,7 @@ import com.example.myapp.models.*;
 import com.example.myapp.repositories.*;
 
 
+
 @RestController
 public class UserService {
 	@Autowired
@@ -81,9 +82,9 @@ public class UserService {
 	}
 
 	@PostMapping("/api/login")
-	public Optional<User> login(@RequestBody User user, HttpSession session) {
-		Optional<User> existingUser = userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
-		if(existingUser.isPresent()) {
+	public User login(@RequestBody User user, HttpSession session) {
+		User existingUser = (User) userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+		if(existingUser != null) {
 			session.setAttribute("user", existingUser);
 			return existingUser;
 		}
@@ -100,9 +101,13 @@ public class UserService {
 	}
 
 	@GetMapping("/api/profile")
-	public Optional<User> profile(HttpSession session) {
+	public Optional<User> getProfile(HttpSession session) {
 		User currentUser = (User) session.getAttribute("user");
 		return userRepository.findById(currentUser.getId());
 	}
 
+	@PostMapping("/api/logout")
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
 }

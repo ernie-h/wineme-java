@@ -8,11 +8,13 @@ function AdminUserServiceClient() {
   this.login = login;
   this.updateProfile = updateProfile;
   this.getProfile = getProfile;
+  this.logout = logout;
 
   this.url = '/api/user';
   this.registerUrl = '/api/register';
   this.loginUrl = '/api/login';
   this.updateProfileUrl = '/api/profile';
+  this.logoutUrl = '/api/logout';
   var self = this;
 
   function createUser(user) {
@@ -107,12 +109,8 @@ function AdminUserServiceClient() {
   }
 
   function updateProfileSuccessful(response) {
-    console.log("Update Profile handler");
-
     if (response.status === 200) {
-
-      //window.location.href = '/jquery/profile/profile.template.client.html';
-      alert('Update success. Please double check Ernie.')
+      alert('Update success.')
     } else {
       alert('Invalid session. Has to be right?');
     }
@@ -125,5 +123,18 @@ function AdminUserServiceClient() {
        .then(function(response) {
          return response.json();
        });
+  }
+
+  function logout() {
+    return fetch(self.registerUrl, {
+      method: 'POST',
+      'credentials': 'include'
+    })
+    .then(logoutSuccess);
+  }
+
+  function logoutSuccess() {
+      window.location.href = '/jquery/login/login.template.client.html';
+      alert('Logout success!')
   }
 }
