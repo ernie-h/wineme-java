@@ -24,7 +24,6 @@
   }
 
   function register() {
-<<<<<<< Updated upstream
      $usernameStr = $usernameFld.val();
      $passwordStr = $passwordFld.val();
      $passwordStr2 = $passwordFld2.val();
@@ -35,7 +34,6 @@
      $dateOfBirthStr = $dateOfBirthFld.val();
      $roleStr = $roleFld.val();
 
-<<<<<<< Updated upstream
      if (($passwordStr || $passwordStr2 !== '') && $passwordStr === $passwordStr2) {
        if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
            $emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
@@ -48,41 +46,6 @@
      } else {
        alert('Passwords do not match. Please retype.');
      }
-=======
-    // var passwordStr2 = passwordFld2.val();
-
-    if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
-        $emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
-        userService.register(new User($usernameStr, $passwordStr, $firstNameStr,
-          $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
-          .then(registrationAlertHandler);
-    } else {
-      alert('Please fill in all fields.');
-=======
-    $usernameStr = $usernameFld.val();
-    $passwordStr = $passwordFld.val();
-    $passwordStr2 = $passwordFld2.val();
-    $firstNameStr = $firstNameFld.val();
-    $lastNameStr = $lastNameFld.val();
-    $emailStr = $emailFld.val();
-    $phoneStr = $phoneFld.val();
-    $dateOfBirthStr = $dateOfBirthFld.val();
-    $roleStr = $roleFld.val();
-
-    if (($passwordStr || $passwordStr2 !== '') && $passwordStr === $passwordStr2) {
-      if ($usernameStr && $passwordStr && $firstNameStr && $lastNameStr &&
-        $emailStr && $phoneStr && $dateOfBirthStr && $roleStr !== null) {
-        userService.register(new User($usernameStr, $passwordStr, $firstNameStr,
-            $lastNameStr, $emailStr, $phoneStr, $dateOfBirthStr, $roleStr))
-          .then(registrationAlertHandler);
-      } else {
-        alert('Please fill in all fields.');
-      }
-    } else {
-      alert('Passwords do not match. Please retype.');
->>>>>>> Stashed changes
-    }
->>>>>>> Stashed changes
   }
 
   function registrationAlertHandler(response) {

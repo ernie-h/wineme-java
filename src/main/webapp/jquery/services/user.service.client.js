@@ -18,46 +18,43 @@ function AdminUserServiceClient() {
   var self = this;
 
   function createUser(user) {
-    return fetch(self.url, {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
+     return fetch(self.url, {
+         method: 'POST',
+         body: JSON.stringify(user),
+         headers: {
+           'content-type': 'application/json'
+         }
+     });
   }
-
   function findAllUsers(callback) {
-    return $.ajax({
-      url: self.url,
-      success: callback
+     return $.ajax({
+         url: self.url,
+         success: callback
     });
   }
-
   function findUserById(userId) {
-    return fetch(
+     return fetch(
         self.url + '/' + userId)
-      .then(function(response) {
-        return response.json();
-      });
+        .then(function(response) {
+          return response.json();
+        });
   }
 
   function updateUser(userId, user) {
-    return fetch(self.url + '/' + userId, {
-      method: 'PUT',
-      body: JSON.stringify(user),
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
+     return fetch(self.url + '/' + userId, {
+         method: 'PUT',
+         body: JSON.stringify(user),
+         headers: {
+           'content-type': 'application/json'
+         }
+       });
   }
 
   function deleteUser(userId) {
-    return fetch(self.url + '/' + userId, {
-      method: 'DELETE'
-    });
+     return fetch(self.url + '/' + userId, {
+       method: 'DELETE'
+     });
   }
-
   function register(user) {
     return fetch(self.registerUrl, {
       method: 'POST',
@@ -72,10 +69,7 @@ function AdminUserServiceClient() {
   function login(username, password) {
     return fetch(self.loginUrl, {
       method: 'POST',
-      body: JSON.stringify({
-        username: username,
-        password: password
-      }),
+      body: JSON.stringify({ username: username, password: password }),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -98,8 +92,8 @@ function AdminUserServiceClient() {
     return fetch(self.updateProfileUrl, {
       'credentials': 'include'
     }).then(function(response) {
-      return response.json();
-    });
+         return response.json();
+       });
   }
 
   function logout() {

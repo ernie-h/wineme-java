@@ -33,7 +33,6 @@
     userService.getProfile().then(populateValues);
 
   }
-
   function populateValues(user) {
     $usernameFld.val(user.username);
     $passwordFld.val(user.password);
@@ -50,17 +49,18 @@
   }
 
   function updateProfile() {
-    $usernameStr = $usernameFld.val();
-    $passwordStr = $passwordFld.val();
-    $firstNameStr = $firstNameFld.val();
-    $lastNameStr = $lastNameFld.val();
-    $emailStr = $emailFld.val();
-    $phoneStr = $phoneFld.val();
-    $dateOfBirthStr = $dateOfBirthFld.val();
-    $roleStr = $roleFld.val();
-    userService.updateProfile(new User($usernameStr, $passwordStr, $firstNameStr, $lastNameStr, $emailStr,
-        $phoneStr, $dateOfBirthStr, $roleStr))
-      .then(updateProfileAlertHandler);
+     $usernameStr = $usernameFld.val();
+     $passwordStr = $passwordFld.val();
+     $firstNameStr = $firstNameFld.val();
+     $lastNameStr = $lastNameFld.val();
+     $emailStr = $emailFld.val();
+     $phoneStr = $phoneFld.val();
+     $dateOfBirthStr = $dateOfBirthFld.val();
+     $roleStr = $roleFld.val();
+     userService.updateProfile(new User
+       ($usernameStr, $passwordStr, $firstNameStr, $lastNameStr, $emailStr,
+         $phoneStr, $dateOfBirthStr, $roleStr))
+          .then(updateProfileAlertHandler);
   }
 
   function updateProfileAlertHandler(response) {
@@ -76,14 +76,6 @@
   }
 
   function logoutAlertHandler() {
-<<<<<<< Updated upstream
       window.location.href = '/jquery/login/login.template.client.html';
-<<<<<<< Updated upstream
-=======
-      alert('Logout success!');
-=======
-    window.location.href = '/jquery/login/login.template.client.html';
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   }
 })();
