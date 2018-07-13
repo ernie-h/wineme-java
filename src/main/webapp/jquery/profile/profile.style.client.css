@@ -7,9 +7,24 @@
   margin: 50px 0 0 170px;
   width: 50%;
 }
+<<<<<<< Updated upstream
 label {
   text-align: left;
 }
 h1 {
   text-align: left;
+=======
+
+<<<<<<< Updated upstream
+form {
+  width: 90%  ;
+=======
+label {
+  text-align: left;
+}
+
+h1 {
+  text-align: left;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
