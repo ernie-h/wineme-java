@@ -3,7 +3,6 @@ package com.example.myapp.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myapp.Course*;
+import com.example.myapp.models.Course;
 import com.example.myapp.repositories.CourseRepository;
 
 
@@ -24,7 +23,7 @@ public class CourseService {
 	CourseRepository courseRepository;
 
 	@PostMapping("/api/course")
-	public User createCourse(@RequestBody Course course) {
+	public Course createCourse(@RequestBody Course course) {
 		return courseRepository.save(course);
 	}
 
@@ -39,8 +38,7 @@ public class CourseService {
 	}
 
 	@GetMapping("/api/course/{courseId}")
-	//maybe map user id as string. Cant be sure it is integer
-	public User findCourseById(@PathVariable("courseId") int courseId) {
+	public Course findCourseById(@PathVariable("courseId") int courseId) {
 		Optional<Course> data = courseRepository.findById(courseId);
 		if(data.isPresent()) {
 			return data.get();
