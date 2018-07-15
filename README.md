@@ -12,5 +12,8 @@ The stack is:
 The web app is hosted by Heroku and can be found
 [here](https://eh-cs4550-summer2-2018.herokuapp.com/jquery/register/register.template.client.html)
 
+**Bonus Questions included:**
+-Everything but "Forget password" functionality
+
 Hope you enjoy and more is to come with future React and Node implementation.
 Ernie :fire:
