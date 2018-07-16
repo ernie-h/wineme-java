@@ -10,10 +10,10 @@ public class Module {
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private int id;
   private String title;
-//  @ManyToOne
-//  @JsonIgnore
-//  private Course course;
-  
+ @ManyToOne
+ @JsonIgnore
+  private Course course;
+
 public int getId() {
 	return id;
 }
@@ -26,12 +26,11 @@ public String getTitle() {
 public void setTitle(String title) {
 	this.title = title;
 }
-//public Course getCourse() {
-//	return course;
-//}
-//public void setCourse(Course course) {
-//	this.course = course;
-//}
-  
-  
+public Course getCourse() {
+	return course;
+}
+public void setCourse(Course course) {
+	this.course = course;
+}
+
 }
