@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.myapp.models.Course;
 import com.example.myapp.models.Module;
+import com.example.myapp.repositories.CourseRepository;
 import com.example.myapp.repositories.ModuleRepository;
 
 
@@ -22,21 +24,42 @@ import com.example.myapp.repositories.ModuleRepository;
 @CrossOrigin(origins = "*", maxAge=3600)
 public class ModuleService {
 	@Autowired
+	CourseRepository courseRepository;
+	@Autowired
 	ModuleRepository moduleRepository;
 
-	@PostMapping("/api/module")
-	public Module createModule(@RequestBody Module module) {
-		return moduleRepository.save(module);
+	@PostMapping("/api/course/{courseId}/module")
+	public Module createModule(
+			@PathVariable("courseId") int courseId,
+			@RequestBody Module newModule) {
+		Optional<Course> data = courseRepository.findById(courseId);
+		if(data.isPresent()) {
+			Course course = data.get();
+			newModule.setCourse(course);
+			return moduleRepository.save(newModule);
+		}
+		return null;
 	}
 
 	@DeleteMapping("/api/module/{moduleId}")
 	public void deleteModule(@PathVariable("moduleId") int id) {
-		moduleRepository.deleteById(id);;
+		moduleRepository.deleteById(id);
 	}
 
 	@GetMapping("/api/module")
 	public List<Module> findAllModules() {
 		return (List<Module>) moduleRepository.findAll();
+	}
+
+  @GetMapping("/api/course/{courseId}/module")
+	public List<Module> findAllModulesForCourse(
+			@PathVariable("courseId") int courseId) {
+		Optional<Course> data = courseRepository.findById(courseId);
+		if(data.isPresent()) {
+			Course course = data.get();
+			return course.getModules();
+		}
+		return null;
 	}
 
 	@GetMapping("/api/module/{moduleId}")
