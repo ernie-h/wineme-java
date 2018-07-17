@@ -1,5 +1,7 @@
 package com.example.myapp.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,6 +15,9 @@ public class Module {
  @ManyToOne
  @JsonIgnore
   private Course course;
+  @OneToMany(mappedBy="module")
+  private List<Lesson> lessons;
+
 
 public int getId() {
 	return id;
