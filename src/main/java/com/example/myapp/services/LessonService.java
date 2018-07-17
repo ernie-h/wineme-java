@@ -35,7 +35,7 @@ public class LessonService {
 		Optional<Module> data = moduleRepository.findById(moduleId);
 		if(data.isPresent()) {
 			Module module = data.get();
-			newLesson.setLesson(module);
+			newLesson.setModule(module);
 			return lessonRepository.save(newLesson);
 		}
 		return null;
