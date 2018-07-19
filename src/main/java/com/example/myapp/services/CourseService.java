@@ -54,7 +54,7 @@ public class CourseService {
 		if(data.isPresent()) {
 			Course course = data.get();
 			course.setTitle(newCourse.getTitle());
-			course.setCreated(newCourse.getCreated());
+			//course.setCreated(newCourse.getCreated());
 			course.setModified(newCourse.getModified());
 			courseRepository.save(course);
 			return course;
