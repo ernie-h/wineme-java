@@ -71,17 +71,15 @@ public class ModuleService {
 		return null;
 	}
 
-//	@PutMapping("/api/module/{moduleId}")
-//	public Module updateModule(@PathVariable("moduleId") int moduleId, @RequestBody Module newModule) {
-//		Optional<Module> data = moduleRepository.findById(moduleId);
-//		if(data.isPresent()) {
-//			Module module = data.get();
-//			module.setTitle(newModule.getTitle());
-//			module.setCreated(newModule.getCreated());
-//			module.setModified(newModule.getModified());
-//			moduleRepository.save(module);
-//			return module;
-//		}
-//		return null;
-//	}
+	@PutMapping("/api/module/{moduleId}")
+	public Module updateModule(@PathVariable("moduleId") int moduleId, @RequestBody Module newModule) {
+		Optional<Module> data = moduleRepository.findById(moduleId);
+		if(data.isPresent()) {
+			Module module = data.get();
+			module.setTitle(newModule.getTitle());
+			moduleRepository.save(module);
+			return module;
+		}
+		return null;
+	}
 }
