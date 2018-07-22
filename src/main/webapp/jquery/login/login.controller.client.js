@@ -24,7 +24,7 @@
 
   function loginAlertHandler(response) {
     if (response.status === 200) {
-      window.location.href = '/jquery/profile/profile.template.client.html';
+      window.location.href = 'http://localhost:3000/courses';
     } else {
       alert('No user with credentials found. Please try again.');
     }
