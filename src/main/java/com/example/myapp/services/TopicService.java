@@ -19,13 +19,14 @@ import com.example.myapp.models.Topic;
 import com.example.myapp.repositories.LessonRepository;
 import com.example.myapp.repositories.TopicRepository;
 
+
 @RestController
 @CrossOrigin(origins = "*", maxAge=3600)
 public class TopicService {
 	@Autowired
-	TopicRepository topicRepository;
-	@Autowired
 	LessonRepository lessonRepository;
+	@Autowired
+	TopicRepository topicRepository;
 
 	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
 	public Topic createTopic(
