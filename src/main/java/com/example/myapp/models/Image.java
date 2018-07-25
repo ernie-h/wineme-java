@@ -1,5 +1,10 @@
 package com.example.myapp.models;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity(name = "Image")
+@DiscriminatorValue("Image")
 public class Image extends Widget {
 	private String src;
 	

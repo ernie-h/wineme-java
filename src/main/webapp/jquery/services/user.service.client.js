@@ -103,7 +103,7 @@ function AdminUserServiceClient() {
   }
 
   function logout() {
-    return fetch(self.registerUrl, {
+    return fetch(self.logoutUrl, {
       method: 'POST',
       'credentials': 'include'
     });

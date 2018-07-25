@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myapp.models.*;
-import com.example.myapp.repositories.*;
+import com.example.myapp.models.User;
+import com.example.myapp.repositories.UserRepository;
 
 
 
