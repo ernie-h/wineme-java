@@ -1,7 +1,11 @@
 package com.example.myapp.models;
 
-import org.hibernate.type.ListType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+
+@Entity(name = "List")
+@DiscriminatorValue("List")
 public class List extends Widget {
 	private String listItems;
 	private ListType listType;

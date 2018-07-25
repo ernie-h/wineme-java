@@ -1,5 +1,6 @@
 package com.example.myapp.models;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,11 +13,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Widget_Type")
 public class Widget {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int order;
+	private int location;
 	private String name;
 	private String text;
 	private String className;
@@ -32,11 +34,11 @@ public class Widget {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getOrder() {
-		return order;
+	public int getLocation() {
+		return location;
 	}
-	public void setOrder(int order) {
-		this.order = order;
+	public void setLocation(int location) {
+		this.location = location;
 	}
 	public String getName() {
 		return name;
@@ -80,7 +82,7 @@ public class Widget {
 	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
-	
-	
-	
+
+
+
 }
