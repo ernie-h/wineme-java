@@ -40,7 +40,7 @@ public class WidgetService {
 	public List<Widget> findAllWidgets() {
 		return (List<Widget>) widgetRepository.findAll();
 	}
-	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic/{topicId}/widget")
+	@PostMapping("/api/topic/{topicId}/widget")
 	public Widget createWidget(
       @PathVariable("topicId") int topicId,
 			@RequestBody Widget newWidget) {
@@ -79,11 +79,16 @@ public class WidgetService {
 		return null;
 	}
 
-	@PostMapping("/api/widget/save")
-	public List<Widget> saveAllWidgets(@RequestBody List<Widget> widgets) {
+	@PostMapping("/api/topic/{topicId}/widget/save")
+	public List<Widget> saveAllWidgets(@PathVariable("topicId") int topicId, @RequestBody List<Widget> widgets) {
 		widgetRepository.deleteAll();
-		for(Widget widget: widgets) {
-			widgetRepository.save(widget);
+		Optional<Topic> data = topicRepository.findById(topicId);
+		if(data.isPresent()) {
+			Topic topic = data.get();
+			for(Widget widget: widgets) {
+				widget.setTopic(topic);
+				widgetRepository.save(widget);
+			}
 		}
 		return widgets;
 	}
