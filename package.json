@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "eslint": "^5.0.1"
+    "eslint": "^5.0.1",
+    "mysql": "^2.16.0"
   },
   "devDependencies": {
     "eslint-config-jquery": "^1.0.1"
