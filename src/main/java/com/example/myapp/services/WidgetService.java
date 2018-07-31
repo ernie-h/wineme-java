@@ -73,23 +73,28 @@ public class WidgetService {
 		if(data.isPresent()) {
 			Widget widget = data.get();
 			widget.setName(newWidget.getName());
+			widget.setClassName(newWidget.getClassName());
+			widget.setLocation(newWidget.getLocation());
+			widget.setText(newWidget.getText());
+			widget.setStyle(newWidget.getStyle());
+			widget.setWidth(newWidget.getWidth());
+			widget.setHeight(newWidget.getHeight());
+			widget.setSrc(newWidget.getSrc());
+			widget.setListItems(newWidget.getListItems());
+			widget.setOrdered(newWidget.getOrdered());
+			widget.setSize(newWidget.getSize());
+			widget.setHref(newWidget.getHref());
 			widgetRepository.save(widget);
 			return widget;
 		}
 		return null;
 	}
 
-	@PostMapping("/api/topic/{topicId}/widget/save")
-	public List<Widget> saveAllWidgets(@PathVariable("topicId") int topicId, @RequestBody List<Widget> widgets) {
-		widgetRepository.deleteAll();
-		Optional<Topic> data = topicRepository.findById(topicId);
-		if(data.isPresent()) {
-			Topic topic = data.get();
+	@PutMapping("/api/widget/save")
+	public List<Widget> saveAllWidgets(@RequestBody List<Widget> widgets) {
 			for(Widget widget: widgets) {
-				widget.setTopic(topic);
-				widgetRepository.save(widget);
+				this.updateWidget(widget.getId(), widget);
 			}
-		}
 		return widgets;
 	}
 }
