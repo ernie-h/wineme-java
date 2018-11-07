@@ -1,20 +1,20 @@
-# Assignment 1: User admin, Login, Register, and Profile
+# wineme-java :wine:
 
-Here you will find code for building a simple User login, register, profile access and admin
-functionality for an online course manager site named Whiteboard.
+When working with the Hibernate backend please use these commands.
 
-The stack is:
+## Set-up
+Downgrade to java 8 (do this once before working on project)
+First check that you are using Java 8
+`java -version`
 
--   HTML, CSS/Bootstrap, JS for client side-
--   AJAX for web service HTTP requests
--   Java/SQL for server side data handling using the Java Persistence Library
+If not type this into command line to downgrade to Java 8
+`export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)`
 
-The web app is hosted by Heroku and can be found
-[here](https://eh-cs4550-summer2-2018.herokuapp.com/jquery/register/register.template.client.html)
+If you don't have Java8 download it from `oracle.com`
 
-**Bonus Questions included:**
--Everything but "Forget password" functionality
+## When ever you wanat to start server again after changes are made
+First clean install the maven project
+`mvn clean install`
 
-Hope you enjoy and more is to come with future React and Node implementation.
-Ernie :fire:
-# wineme-java
+Then compress to jar which starts a server at `localhost:8000`
+`java -jar target/java-server-0.0.1-SNAPSHOT.jar`
