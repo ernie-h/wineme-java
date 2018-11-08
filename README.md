@@ -18,3 +18,19 @@ First clean install the maven project
 
 Then compress to jar which starts a server at `localhost:8000`
 `java -jar target/java-server-0.0.1-SNAPSHOT.jar`
+
+## Deploying to Heroku
+
+You can deploy to Heroku through your command line with these commands.
+
+First login to Heroku.
+
+`heroku login`
+
+Then add this heroku remote to your git remotes.
+`heroku git:remote -a https://git.heroku.com/wine-me-server.git`
+
+Then push your heroku master branch to heroku
+`git push heroku master`
+
+**ALWAYS MAKE SURE YOU HAVE PULLED MASTER AND HAVE THE MOST UPDATED BEFORE DEPLOYING TO HEROKU**
