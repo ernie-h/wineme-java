@@ -1,4 +1,4 @@
-# wineme-java :wine:
+# wineme-java :wine_glass:
 
 When working with the Hibernate backend please use these commands.
 
@@ -17,7 +17,7 @@ First clean install the maven project
 `mvn clean install`
 
 Then compress to jar which starts a server at `localhost:8000`
-`java -jar target/java-server-0.0.1-SNAPSHOT.jar`
+`java -jar target/myapp-0.0.1-SNAPSHOT.jar`
 
 ## Deploying to Heroku
 
