@@ -12,7 +12,7 @@ If not type this into command line to downgrade to Java 8
 
 If you don't have Java8 download it from `oracle.com`
 
-## When ever you wanat to start server again after changes are made
+## When ever you want to start server again after changes are made
 First clean install the maven project
 `mvn clean install`
 
