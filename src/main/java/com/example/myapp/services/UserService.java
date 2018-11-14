@@ -56,12 +56,8 @@ public class UserService {
 			User user = data.get();
 			user.setUsername(newUser.getUsername());
 			user.setPassword(newUser.getPassword());
-			user.setFirst_name(newUser.getFirst_name());
-			user.setLast_name(newUser.getLast_name());
 			user.setEmail(newUser.getEmail());
-			user.setPhone(newUser.getPhone());
-			user.setDate_of_birth(newUser.getDate_of_birth());
-			user.setRole(newUser.getRole());
+			user.setPersonality(newUser.getPersonality());
 			userRepository.save(user);
 			return user;
 		}
@@ -96,14 +92,14 @@ public class UserService {
 	@PutMapping("/api/profile")
 	public User updateProfile(@RequestBody User newUser, HttpSession session) {
 		User sessionUser = (User) session.getAttribute("user");
-		int sessionUserId = sessionUser.getId();
+		int sessionUserId = sessionUser.getUserId();
 		return this.updateUser(sessionUserId, newUser);
 	}
 
 	@GetMapping("/api/profile")
 	public Optional<User> getProfile(HttpSession session) {
 		User currentUser = (User) session.getAttribute("user");
-		return userRepository.findById(currentUser.getId());
+		return userRepository.findById(currentUser.getUserId());
 	}
 
 	@PostMapping("/api/logout")
