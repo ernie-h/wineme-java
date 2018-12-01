@@ -1,5 +1,6 @@
 package com.example.myapp.services;
 
+import com.example.myapp.models.StoreEntity;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.myapp.models.Store;
 import com.example.myapp.repositories.StoreRepository;
 
-
 @RestController
 @CrossOrigin(origins = "*", maxAge=3600)
 public class StoreService {
 	@Autowired
 	StoreRepository storeRepository;
+
+	@PostMapping("/api/store")
+	public StoreEntity createStore(@RequestBody StoreEntity store) { return storeRepository.save(store); }
 
 	// @PostMapping("/api/store")
 	// public Store createStore(
@@ -43,8 +46,8 @@ public class StoreService {
 	}
 
 	@GetMapping("/api/Store")
-	public List<Store> findAllTopics() {
-		return (List<Store>) storeRepository.findAll();
+	public List<StoreEntity> findAllTopics() {
+		return (List<StoreEntity>) storeRepository.findAll();
 	}
 
 //   @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/Store")
@@ -59,8 +62,8 @@ public class StoreService {
 // 	}
 
 	@GetMapping("/api/Store/{topicId}")
-	public Store findTopicById(@PathVariable("topicId") int topicId) {
-		Optional<Store> data = storeRepository.findById(topicId);
+	public StoreEntity findTopicById(@PathVariable("topicId") int topicId) {
+		Optional<StoreEntity> data = storeRepository.findById(topicId);
 		if(data.isPresent()) {
 			return data.get();
 		}
@@ -68,13 +71,13 @@ public class StoreService {
 	}
 
 	@PutMapping("/api/Store/{topicId}")
-	public Store updateTopic(@PathVariable("topicId") int topicId, @RequestBody Store newStore) {
-		Optional<Store> data = storeRepository.findById(topicId);
+	public StoreEntity updateTopic(@PathVariable("topicId") int topicId, @RequestBody StoreEntity newStore) {
+		Optional<StoreEntity> data = storeRepository.findById(topicId);
 		if(data.isPresent()) {
-			Store Store = data.get();
-			Store.setName(newStore.getName());
-			storeRepository.save(Store);
-			return Store;
+			StoreEntity store = data.get();
+			store.setName(newStore.getName());
+			storeRepository.save(store);
+			return store;
 		}
 		return null;
 	}
