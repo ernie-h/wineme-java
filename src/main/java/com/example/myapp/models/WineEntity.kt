@@ -1,10 +1,13 @@
 package com.example.myapp.models
 
 import javax.persistence.Entity
+import javax.validation.constraints.NotBlank
 
 @Entity(name = "wine")
 class WineEntity(
-    val name: String,
-    val flavorProfile: String,
-    val wineTypeEntity: WineTypeEntity // foreign key on WineTypeEntity
+        @get: NotBlank
+        var name: String,
+        @get: NotBlank
+        var flavorProfile: String,
+        var wineTypeEntity: WineTypeEntity // foreign key on WineTypeEntity
 ) : AbstractModelPersistable<Int>()

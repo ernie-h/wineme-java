@@ -4,8 +4,8 @@ import javax.persistence.Entity
 
 @Entity(name = "user_reviews_wine")
 class UserReviewsWineEntity(
-        val rating: Boolean,
-        val reviewer: UserEntity,
-        val reviewedWine: WineEntity
+        var rating: Boolean,
+        var reviewer: UserEntity,
+        var reviewedWine: WineEntity
 ) : AbstractModelPersistable<Int>() {
 }
