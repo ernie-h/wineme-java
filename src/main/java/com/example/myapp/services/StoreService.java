@@ -37,8 +37,8 @@ public class StoreService {
 	// 	return null;
 	// }
 
-	@DeleteMapping("/api/Store/{topicId}")
-	public void deleteTopic(@PathVariable("topicId") int id) {
+	@DeleteMapping("/api/Store/{storeId}")
+	public void deleteTopic(@PathVariable("storeId") int id) {
 		storeRepository.deleteById(id);
 	}
 
