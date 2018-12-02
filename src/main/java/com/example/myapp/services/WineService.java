@@ -24,12 +24,13 @@ public class WineService {
 	@Autowired
 	WineRepository wineRepository;
 
-    @GetMapping("/api/wine/{personality}")
-    public List<Wine> findPersonalityWines(@PathVariable("personality") String personality) {
+    @GetMapping("/api/wine/personality/{mb}")
+    public List<Wine> findPersonalityWines(@PathVariable("mb") String personality) {
         List<Wine> results;
         switch(personality) {
             case "INTJ": 
-            results = wineRepository.findPersonalityWines(personality);
+            results = wineRepository.findINTJ();
+
             break;
             // case "INTP": 
             // break;
