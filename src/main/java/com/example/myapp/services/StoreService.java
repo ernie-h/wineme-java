@@ -24,30 +24,42 @@ public class StoreService {
 	@Autowired
 	StoreRepository storeRepository;
 
-	// @PostMapping("/api/store")
-	// public Store createStore(
-    //   @PathVariable("lessonId") int lessonId,
-	// 		@RequestBody Store newTopic) {
-	// 	Optional<Lesson> data = lessonRepository.findById(lessonId);
-	// 	if(data.isPresent()) {
-	// 		Lesson lesson = data.get();
-	// 		newTopic.setName(lesson);
-	// 		return storeRepository.save(newTopic);
-	// 	}
-	// 	return null;
-	// }
+	@PostMapping("/api/store")
+	public Store createStore(@RequestBody Store newStore) {
+		return storeRepository.save(newStore);
+	}
 
-	@DeleteMapping("/api/Store/{storeId}")
-	public void deleteTopic(@PathVariable("storeId") int id) {
+	@DeleteMapping("/api/store/{storeId}")
+	public void deleteStore(@PathVariable("storeId") int id) {
 		storeRepository.deleteById(id);
 	}
 
-	@GetMapping("/api/Store")
-	public List<Store> findAllTopics() {
+	@PutMapping("/api/store/{storeId}")
+	public Store updateStore(@PathVariable("storeId") int storeId, @RequestBody Store newStore) {
+		Optional<Store> data = storeRepository.findById(storeId);
+		if(data.isPresent()) {
+			Store store = data.get();
+			store.setName(newStore.getName());
+			storeRepository.save(store);
+			return store;
+		}
+		return null;
+	}
+
+	@GetMapping("/api/store")
+	public List<Store> findAllStores() {
 		return (List<Store>) storeRepository.findAll();
 	}
 
-//   @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/Store")
+	@GetMapping("/api/store/{storeId}")
+	public Store findStoreById(@PathVariable("storeId") int storeId) {
+		Optional<Store> data = storeRepository.findById(storeId);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		return null;
+	}
+	//   @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/Store")
 // 	public List<Store> findAllTopicsForLesson(
 // 			@PathVariable("lessonId") int lessonId) {
 // 		// Optional<Lesson> data = lessonRepository.findById(lessonId);
@@ -57,25 +69,4 @@ public class StoreService {
 // 		}
 // 		return null;
 // 	}
-
-	@GetMapping("/api/Store/{topicId}")
-	public Store findTopicById(@PathVariable("topicId") int topicId) {
-		Optional<Store> data = storeRepository.findById(topicId);
-		if(data.isPresent()) {
-			return data.get();
-		}
-		return null;
-	}
-
-	@PutMapping("/api/Store/{topicId}")
-	public Store updateTopic(@PathVariable("topicId") int topicId, @RequestBody Store newStore) {
-		Optional<Store> data = storeRepository.findById(topicId);
-		if(data.isPresent()) {
-			Store Store = data.get();
-			Store.setName(newStore.getName());
-			storeRepository.save(Store);
-			return Store;
-		}
-		return null;
-	}
 }

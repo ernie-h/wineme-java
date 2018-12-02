@@ -31,7 +31,22 @@ public class UserService {
 
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
-		userRepository.deleteById(id);;
+		userRepository.deleteById(id);
+	}
+	
+	@PutMapping("/api/user/{userId}")
+	public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
+		Optional<User> data = userRepository.findById(userId);
+		if(data.isPresent()) {
+			User user = data.get();
+			user.setUsername(newUser.getUsername());
+			user.setPassword(newUser.getPassword());
+			user.setEmail(newUser.getEmail());
+			user.setPersonality(newUser.getPersonality());
+			userRepository.save(user);
+			return user;
+		}
+		return null;
 	}
 
 	@GetMapping("/api/user")
@@ -45,21 +60,6 @@ public class UserService {
 		Optional<User> data = userRepository.findById(userId);
 		if(data.isPresent()) {
 			return data.get();
-		}
-		return null;
-	}
-
-	@PutMapping("/api/user/{userId}")
-	public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
-		Optional<User> data = userRepository.findById(userId);
-		if(data.isPresent()) {
-			User user = data.get();
-			user.setUsername(newUser.getUsername());
-			user.setPassword(newUser.getPassword());
-			user.setEmail(newUser.getEmail());
-			user.setPersonality(newUser.getPersonality());
-			userRepository.save(user);
-			return user;
 		}
 		return null;
 	}

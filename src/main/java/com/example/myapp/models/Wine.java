@@ -10,11 +10,10 @@ public class Wine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wineId;
-    private String name;
-    private String flavorProfile;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wine_type_id")
-    private WineType wineType;
+    private String title;
+    private String variety;
+    @Column(length=2000)
+    private String description;
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                 CascadeType.PERSIST,
@@ -38,28 +37,27 @@ public class Wine {
         this.wineId = wineId;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getVariety() {
+        return this.variety;
     }
 
-    public String getFlavorProfile() {
-        return this.flavorProfile;
+    public void setVariety(String variety) {
+        this.variety = variety;
     }
 
-    public void setFlavorProfile(String flavorProfile) {
-        this.flavorProfile = flavorProfile;
+    public String getDescription() {
+        return this.description;
     }
 
-    public WineType getWineType() {
-        return this.wineType;
-    }
-
-    public void setWineType(WineType wineType) {
-        this.wineType = wineType;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Store> getStores() {
