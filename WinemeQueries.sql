@@ -1,6 +1,12 @@
 USE wineme;
 SELECT * FROM wineme.wine;
 
+-- TO migrate WINE REVIEWS into OUR db
+USE wine_project;
+INSERT INTO wineme.wine(description,title,variety)
+SELECT wine.description, wine.title, wine.variety
+FROM wine_project.wine;
+
 -- INTJ
 SELECT * FROM wine WHERE
 description LIKE '%dry%'
