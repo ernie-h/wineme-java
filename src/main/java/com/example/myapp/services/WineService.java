@@ -3,8 +3,11 @@ package com.example.myapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.myapp.models.Wine;
+import com.example.myapp.repositories.WineRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,62 +17,71 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myapp.models.Wine;
-import com.example.myapp.repositories.WineRepository;
-
-
 @RestController
-@CrossOrigin(origins = "*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class WineService {
-	@Autowired
-	WineRepository wineRepository;
+    @Autowired
+    WineRepository wineRepository;
 
     @GetMapping("/api/wine/personality/{mb}")
     public List<Wine> findPersonalityWines(@PathVariable("mb") String personality) {
         List<Wine> results;
-        switch(personality) {
-            case "INTJ": 
-            results = wineRepository.findINTJ();
-
+        PageRequest pr = new PageRequest(0, 10);
+        switch (personality) {
+        case "INTJ":
+            results = wineRepository.findINTJ(pr);
             break;
-            // case "INTP": 
-            // break;
-            // case "ENTJ": 
-            // break;
-            // case "ENTP": 
-            // break;
-            // case "INFJ": 
-            // break;
-            // case "INFP": 
-            // break;
-            // case "ENFJ": 
-            // break;
-            // case "ENFP": 
-            // break;
-            // case "ISTJ": 
-            // break;
-            // case "ISFJ": 
-            // break;
-            // case "ESTJ": 
-            // break;
-            // case "ESFJ": 
-            // break;
-            // case "ISTP": 
-            // break;
-            // case "ISFP": 
-            // break;
-            // case "ESTP": 
-            // break;
-            // case "ESFP": 
-            // break;
+            case "INTP": 
+            results = wineRepository.findINTP(pr);
+            break;
+            case "ENTJ":
+            results = wineRepository.findENTJ(pr);
+            break;
+            case "ENTP": 
+            results = wineRepository.findENTP(pr);
+            break;
+            case "INFJ": 
+            results = wineRepository.findINFJ(pr);
+            break;
+            case "INFP": 
+            results = wineRepository.findINFP(pr);
+            break;
+            case "ENFJ": 
+            results = wineRepository.findENFJ(pr);
+            break;
+            case "ENFP": 
+            results = wineRepository.findENFP(pr);
+            break;
+            case "ISTJ": 
+            results = wineRepository.findISTJ(pr);
+            break;
+            case "ISFJ": 
+            results = wineRepository.findISFJ(pr);
+            break;
+            case "ESTJ": 
+            results = wineRepository.findESTJ(pr);
+            break;
+            case "ESFJ": 
+            results = wineRepository.findESFJ(pr);
+            break;
+            case "ISTP": 
+            results = wineRepository.findISTP(pr);
+            break;
+            case "ISFP": 
+            results = wineRepository.findISFP(pr);
+            break;
+            case "ESTP": 
+            results = wineRepository.findESTP(pr);
+            break;
+            case "ESFP": 
+            results = wineRepository.findESFP(pr);
+            break;
             default:
             throw new IllegalArgumentException("Not valid personality.");
-
         }
-
         return results;
-
     }
+
 	@PostMapping("/api/wine")
 	public Wine createStore(@RequestBody Wine newWine) {
 		return wineRepository.save(newWine);
@@ -107,14 +119,4 @@ public class WineService {
 		}
 		return null;
 	}
-	//   @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/Wine")
-// 	public List<Wine> findAllTopicsForLesson(
-// 			@PathVariable("lessonId") int lessonId) {
-// 		// Optional<Lesson> data = lessonRepository.findById(lessonId);
-// 		if(data.isPresent()) {
-// 			Lesson lesson = data.get();
-// 			// return lesson.getTopics();
-// 		}
-// 		return null;
-// 	}
 }
