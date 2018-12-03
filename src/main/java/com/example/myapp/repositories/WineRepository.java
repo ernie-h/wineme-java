@@ -1,14 +1,14 @@
 package com.example.myapp.repositories;
 
+import com.example.myapp.models.Wine;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-import com.example.myapp.models.Wine;
-
 public interface WineRepository extends CrudRepository<Wine, Integer> {
+    
     @Query(
         "SELECT w FROM Wine w WHERE w.description LIKE '%dry%'" +
         "OR w.description LIKE '%depth%' OR w.description LIKE '%strong%'" +

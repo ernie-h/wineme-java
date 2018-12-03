@@ -45,6 +45,6 @@ public class Wine {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description.toLowerCase();
     }
 }

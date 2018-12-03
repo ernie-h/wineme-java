@@ -15,35 +15,23 @@ public class Store {
   private String name;
   @Column(nullable = false)
   private String location;
-
-  public int getStoreId() {
-    return store_id;
-  }
-
-  public void setStoreId(int store_id) {
-    this.store_id = store_id;
-  }
-
-  /**
-   * @return the location
-   */
-  public String getLocation() {
-    return location;
-  }
-
-  /**
-   * @param location the location to set
-   */
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
+	@Column(nullable = false, length = 6)
+	private Double longitude;
+	@Column(nullable = false, length = 6)
+	private Double latitude;
+	
+	public int getStoreId() { return store_id; }
+	public void setStoreId(int store_id) { this.store_id = store_id; }
+	
+	public String getLocation() { return location; }
+	public void setLocation(String location) { this.location = location; }
+	
+	public String getName() { return name; }
+	public void setName(String name) { this.name = name; }
+	
+	public Double getLongitude() { return longitude; }
+	public void setLongitude(double longitude) { this.longitude = longitude; }
+	
+	public Double getLatitude() { return latitude; }
+	public void setLatitude(double latitude) { this.latitude = latitude; }
 }

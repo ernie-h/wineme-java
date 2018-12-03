@@ -1,21 +1,13 @@
 package com.example.myapp.services;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.example.myapp.models.Wine;
 import com.example.myapp.repositories.WineRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -83,17 +75,13 @@ public class WineService {
     }
 
 	@PostMapping("/api/wine")
-	public Wine createStore(@RequestBody Wine newWine) {
-		return wineRepository.save(newWine);
-	}
+	public Wine createWine(@RequestBody Wine newWine) { return wineRepository.save(newWine); }
 
 	@DeleteMapping("/api/wine/{wineId}")
-	public void deleteStore(@PathVariable("wineId") int id) {
-		wineRepository.deleteById(id);
-	}
+	public void deleteWine(@PathVariable("wineId") int id) { wineRepository.deleteById(id); }
 
 	@PutMapping("/api/wine/{wineId}")
-	public Wine updateStore(@PathVariable("wineId") int wineId, @RequestBody Wine newWine) {
+	public Wine updateWine(@PathVariable("wineId") int wineId, @RequestBody Wine newWine) {
 		Optional<Wine> data = wineRepository.findById(wineId);
 		if(data.isPresent()) {
 			Wine wine = data.get();
@@ -107,16 +95,8 @@ public class WineService {
 	}
 
 	@GetMapping("/api/wine")
-	public List<Wine> findAllStores() {
-		return (List<Wine>) wineRepository.findAll();
-	}
+	public List<Wine> findAllWines() { return (List<Wine>) wineRepository.findAll(); }
 
 	@GetMapping("/api/wine/{wineId}")
-	public Wine findStoreById(@PathVariable("wineId") int wineId) {
-		Optional<Wine> data = wineRepository.findById(wineId);
-		if(data.isPresent()) {
-			return data.get();
-		}
-		return null;
-	}
+	public Wine findWineById(@PathVariable("wineId") int wineId) { return wineRepository.findById(wineId).orElse(null); }
 }

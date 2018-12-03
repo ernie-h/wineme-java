@@ -1,5 +1,6 @@
 package com.example.myapp.services;
 
+import com.example.myapp.models.Location;
 import com.example.myapp.models.Store;
 import com.example.myapp.repositories.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,12 @@ public class StoreService {
 		}
 		return null;
 	}
+	
+	@GetMapping("/api/store/nearby")
+	public List<Store> findAllNearby(@RequestBody Location location) {
+		return (List<Store>) storeRepository.findStoresNear(location.getLongitude(), location.getLatitude(), 0.075);
+	}
+	
 	//   @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/Store")
 // 	public List<Store> findAllTopicsForLesson(
 // 			@PathVariable("lessonId") int lessonId) {
