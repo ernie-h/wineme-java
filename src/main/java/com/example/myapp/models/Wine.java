@@ -1,33 +1,21 @@
 package com.example.myapp.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity(name = "Wine")
 @Table(name = "wine")
 public class Wine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wineId;
+    
+    @Column(nullable = false)
     private String title;
+    
+    @Column(nullable = false)
     private String variety;
-    @Column(length=2000)
+    
+    @Column(length = 2000, nullable = false)
     private String description;
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            },
-            mappedBy = "wines")
-    List<Store> stores = new ArrayList<Store>();
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            },
-            mappedBy = "wines")
-    List<User> users = new ArrayList<User>();
 
     public int getWineId() {
         return this.wineId;
@@ -59,22 +47,4 @@ public class Wine {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public List<Store> getStores() {
-        return this.stores;
-    }
-
-    public void setStores(List<Store> stores) {
-        this.stores = stores;
-    }
-
-    public List<User> getUsers() {
-        return this.users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-
 }

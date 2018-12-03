@@ -1,10 +1,6 @@
 package com.example.myapp.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -13,24 +9,25 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int user_id;
+  
+  @Column(nullable = false)
   private String username;
+  
+  @Column(nullable = false)
   private String password;
+  
+  @Column(nullable = false)
   private String email;
+  
   @Enumerated(EnumType.STRING)
+  @Column(nullable = false)
   private MyersBriggs personality;
+  
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "store_id")
+  @JoinColumn(name = "store_id", nullable = true)
   private Store store;
-  @ManyToMany(fetch = FetchType.LAZY,
-  cascade = {
-      CascadeType.PERSIST,
-      CascadeType.MERGE
-  })
-  @JoinTable(name = "user_reviews",
-  joinColumns = { @JoinColumn(name = "user_id") },
-  inverseJoinColumns = { @JoinColumn(name = "wine_id") })
-  List<Wine> wines = new ArrayList<Wine>();
-   /**
+  
+  /**
    * @return the store
    */
   public Store getStore() {
